@@ -1,0 +1,6 @@
+node_modules/
+playwright-report/
+test-results/
+yarn.lock
+package-lock.json
+tests

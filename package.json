@@ -1,0 +1,11 @@
+{
+  "name": "ass-danmaku-store",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "src/index.js",
+  "repository": "https://github.com/OtaDou/ass-danmaku-store.git",
+  "license": "MPL",
+  "devDependencies": {
+    "@playwright/test": "^1.23.3"
+  }
+}
