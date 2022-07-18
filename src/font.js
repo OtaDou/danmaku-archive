@@ -3,7 +3,7 @@ export default {
     // https://bugzilla.mozilla.org/show_bug.cgi?id=561361
     if(!globalThis.navigator){ // non-browser enviroment
       return (fontname, text, size) => {
-        return size * text.length * 8
+        return size * text.length
       }
     }
     if (/linux/i.test(navigator.platform)) {
