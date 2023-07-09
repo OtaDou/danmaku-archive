@@ -6,6 +6,9 @@
   "repository": "https://github.com/OtaDou/ass-danmaku-store.git",
   "license": "MPL",
   "devDependencies": {
-    "@playwright/test": "^1.23.3"
+    "@playwright/test": "1.35.1"
+  },
+  "scripts": {
+    "start": "playwright test --retries=3"
   }
 }

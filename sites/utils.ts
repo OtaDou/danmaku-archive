@@ -19,15 +19,23 @@ export function readHistoryRecord() {
 }
 
 export function readHistoryUrl() {
-  return readHistoryRecord().map((it) => it[0])
+  return readHistoryRecord().map((it) => it[it.length - 1])
 }
 
-export function addRecord(link, filePath, series = "UNKOWN") {
+export function addRecord(series = "NO_SERIES", ...args) {
+  const weekMark = ["日", "月", "火", "水", "木", "金", "土"]
+  if (args[args.length - 1].indexOf("http") === -1) {
+    console.warn("WARN: last arg is not url, skip")
+    return
+  }
+  const date = new Date()
+  const todayMark = weekMark[date.getDay()]
+  const offset = date.getTimezoneOffset()
+  const formattedDate = new Date(date.getTime() - offset * 60 * 1000)
+    .toISOString()
+    .split("T")[0]
   const text = String(fs.readFileSync(HISTORY_PATH))
-  const url = new URL(link)
-  const newLine = `${url.origin}${url.pathname},${Number(
-    new Date()
-  )},${series},${filePath}`
+  const newLine = `${series},${formattedDate}(${todayMark}),${args.join(",")}`
   fs.writeFileSync(HISTORY_PATH, newLine + "\n" + text)
   return newLine
 }

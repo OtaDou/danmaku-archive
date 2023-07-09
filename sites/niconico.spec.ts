@@ -2,25 +2,42 @@ import { test, expect, type Page } from "@playwright/test"
 import { readHistoryUrl, addRecord, saveFile } from "./utils.ts"
 import { defaultOptions, parser, toLayout, toAss } from "../src/index.js"
 
+const INTERCEPT_URL_REGEX = /nvcomment.nicovideo.jp\/(api\.json|v1\/threads)/
+const VIDEO_SELECTOR = `section >> nth=0 >> a[href^="https://www.nicovideo.jp/watch"]`
+const SAVE_BASE_PATH = `archive/`
+
 const danmakuConifg = {
   fontFamily: "Microsoft YaHei",
 }
 
 test.afterAll(() => {})
 
-test("異世界おじさん", async ({ page }) => {
+test("無職転生Ⅱ", async ({ page }) => {
   const config = {
-    name: "異世界おじさん",
-    homePage: "https://anime.nicovideo.jp/detail/isekaiojisan/index.html",
-    locator: `section >> nth=0 >> a[href^="https://www.nicovideo.jp/watch"]`,
-    savePath: "archive/isekaiojisan/",
-    commentUrl: /nvcomment.nicovideo.jp\/(api\.json|v1\/threads)/,
+    seriesName: "Mushoku_Tensei_2",
+    homePage: "https://anime.nicovideo.jp/detail/mushokutensei-2ki/index.html",
+    dayOfWeek: 0, // Sunday
+  }
+
+  await autoDownloadDanmaku(page, config)
+})
+
+async function autoDownloadDanmaku(page: Page, config: any) {
+  if (
+    config.dayOfWeek != undefined &&
+    config.dayOfWeek !== new Date().getDay()
+  ) {
+    const day = new Date().toLocaleString("US-en", { weekday: "long" })
+    console.log(
+      `INFO: today is ${day}, skip download danmaku for ${config.seriesName}`
+    )
+    return
   }
 
   await page.route("**/*.{png,jpg,jpeg}", (route) => route.abort()) //No image
   await page.goto(config.homePage, { waitUntil: "domcontentloaded" })
 
-  const links = await getVideoLinks(page, config)
+  const links = await getVideoLinks(page)
 
   const newLinks = filterNewLink(links)
 
@@ -36,41 +53,10 @@ test("異世界おじさん", async ({ page }) => {
       }),
     ])
   }
-})
+}
 
-test("オーバーロードⅣ", async ({ page }) => {
-  const config = {
-    name: "オーバーロードⅣ",
-    homePage: "https://anime.nicovideo.jp/detail/overlord-anime4/index.html",
-    locator: `section >> nth=0 >> a[href^="https://www.nicovideo.jp/watch"]`,
-    savePath: "archive/overlord4/",
-    commentUrl: /nvcomment.nicovideo.jp\/(api\.json|v1\/threads)/,
-  }
-
-  await page.route("**/*.{png,jpg,jpeg}", (route) => route.abort()) //No image
-  await page.goto(config.homePage, { waitUntil: "domcontentloaded" })
-
-  const links = await getVideoLinks(page, config)
-
-  const newLinks = filterNewLink(links)
-
-  console.log(`INFO: ${newLinks.length}(new) / ${links.length}(free) `)
-
-  for await (const link of newLinks) {
-    await page.goto(link, { waitUntil: "domcontentloaded" })
-    const title = (await page.title()).split("-")[0].trim()
-    await Promise.all([
-      page.reload({ waitUntil: "domcontentloaded" }),
-      page.waitForResponse(async (res) => {
-        return niconicoCommentsHandler(res, config, title, page.url())
-      }),
-    ])
-  }
-})
-
-async function getVideoLinks(page, config) {
-  const anchors = page.locator(config.locator).filter({
-    hasText: config.name,
+async function getVideoLinks(page) {
+  const anchors = page.locator(VIDEO_SELECTOR).filter({
     has: page.locator(`[data-video-type="free"]`), // Free only
   })
 
@@ -81,14 +67,14 @@ async function getVideoLinks(page, config) {
 
 async function niconicoCommentsHandler(res, config, title, url) {
   const link = res.url()
-  const isComment = config.commentUrl.test(link)
+  const isComment = INTERCEPT_URL_REGEX.test(link)
   if (isComment) {
     const rawBody = await res.body()
     const { thread, danmaku: content } = parser.niconico(rawBody)
-    const name = `${title}`
+    const bangumiTitle = `${title}`
     const item = {
       id: thread,
-      meta: { name, url },
+      meta: { name: bangumiTitle, url },
       content: content,
       layout: await toLayout(content, {
         ...defaultOptions,
@@ -96,10 +82,13 @@ async function niconicoCommentsHandler(res, config, title, url) {
       }),
     }
     let ass = toAss(item, defaultOptions)
-    console.log(`saving...${name}.ass`)
-    const fileName = saveFile(config.savePath, name, "ass", ass)
-    saveFile(config.savePath, name, "json", String(rawBody))
-    addRecord(url, config.savePath + fileName, config.name)
+    console.log(`saving...${bangumiTitle}.ass`)
+    const seriesFolder = SAVE_BASE_PATH + config.seriesName + "/"
+    // save ass danmaku
+    saveFile(seriesFolder, bangumiTitle, "ass", ass)
+    // save raw json
+    saveFile(seriesFolder, bangumiTitle, "json", String(rawBody))
+    addRecord(config.seriesName, bangumiTitle, seriesFolder, url)
   }
   return isComment
 }
