@@ -8,29 +8,17 @@ Template from https://github.com/othneildrew/Best-README-Template
 <br />
 <div align="center">
 
-<h2 align="center">Ass-danmaku-store</h2>
+<h2 align="center">danmaku-archive</h2>
 
   <p align="center">
-    auto download danmaku and convert it to ass format.
+    Download danmaku and convert it to ass format.
     <br />
-    <a href="https://OtaDou.github.io/ass-danmaku-store/"><strong>Explore the demo outputs »</strong></a>
+    <a href="https://OtaDou.github.io/danmaku-archive/"><strong>Explore the demo outputs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/OtaDou/ass-danmaku-store/branches">View all branch (season)</a>
+    <a href="https://github.com/OtaDou/danmaku-archive/branches">View all branch (season)</a>
   </p>
 </div>
-
-
-### Install
-```
-npm i
-npx playwright install
-npx playwright install-deps
-```
-### Usage
-```
-npx playwright test
-```
 
 ## Project structure
 - `/site` playwright script
