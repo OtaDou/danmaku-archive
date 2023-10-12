@@ -19,10 +19,44 @@ test.beforeEach(async ({ page }) => {
   )
 })
 
+test("お兄ちゃんはおしまい", async ({ page }, testInfo) => {
+  const config = {
+    seriesName: testInfo.title,
+    homePage: "https://anime.nicovideo.jp/detail/onimai/index.html",
+  }
+
+  await autoDownloadDanmaku(page, config)
+})
 test("陰の実力者になりたくて", async ({ page }, testInfo) => {
   const config = {
     seriesName: testInfo.title,
-    homePage: "https://anime.nicovideo.jp/detail/shadow-garden2/index.html",
+    homePage: "https://anime.nicovideo.jp/detail/shadow-garden/index.html",
+  }
+
+  await autoDownloadDanmaku(page, config)
+})
+test("スパイ教室", async ({ page }, testInfo) => {
+  const config = {
+    seriesName: testInfo.title,
+    homePage: "https://anime.nicovideo.jp/detail/spyroom-anime/index.html",
+  }
+
+  await autoDownloadDanmaku(page, config)
+})
+test("便利屋斎藤さん、異世界に行く", async ({ page }, testInfo) => {
+  const config = {
+    seriesName: testInfo.title,
+    homePage: "https://anime.nicovideo.jp/detail/saitou-anime/index.html",
+  }
+
+  await autoDownloadDanmaku(page, config)
+})
+test("ダンジョンに出会いを求めるのは間違っているだろうかⅣ 深章 厄災篇", async ({
+  page,
+}, testInfo) => {
+  const config = {
+    seriesName: testInfo.title,
+    homePage: "https://anime.nicovideo.jp/detail/danmachi4-yakusai/index.html",
   }
 
   await autoDownloadDanmaku(page, config)
