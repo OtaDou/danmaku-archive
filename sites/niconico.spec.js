@@ -19,10 +19,50 @@ test.beforeEach(async ({ page }) => {
   )
 })
 
-test("陰の実力者になりたくて", async ({ page }, testInfo) => {
+test("異世界おじさん", async ({ page }, testInfo) => {
   const config = {
     seriesName: testInfo.title,
-    homePage: "https://anime.nicovideo.jp/detail/shadow-garden2/index.html",
+    homePage: "https://anime.nicovideo.jp/detail/isekaiojisan/index.html",
+  }
+
+  await autoDownloadDanmaku(page, config)
+})
+test("Engage Kiss", async ({ page }, testInfo) => {
+  const config = {
+    seriesName: testInfo.title,
+    homePage: "https://anime.nicovideo.jp/detail/engage-kiss/index.html",
+  }
+
+  await autoDownloadDanmaku(page, config)
+})
+test("ダンジョンに出会いを求めるのは間違っているだろうかⅣ 新章 迷宮篇", async ({ page }, testInfo) => {
+  const config = {
+    seriesName: testInfo.title,
+    homePage: "https://anime.nicovideo.jp/detail/danmachi4/index.html",
+  }
+
+  await autoDownloadDanmaku(page, config)
+})
+test("シャドーハウス2nd Season", async ({ page }, testInfo) => {
+  const config = {
+    seriesName: testInfo.title,
+    homePage: "https://anime.nicovideo.jp/detail/shadowshouse2/index.html",
+  }
+
+  await autoDownloadDanmaku(page, config)
+})
+test("邪神ちゃんドロップキックX", async ({ page }, testInfo) => {
+  const config = {
+    seriesName: testInfo.title,
+    homePage: "https://anime.nicovideo.jp/detail/jashinchan3/index.html",
+  }
+
+  await autoDownloadDanmaku(page, config)
+})
+test("オーバーロードⅣ", async ({ page }, testInfo) => {
+  const config = {
+    seriesName: testInfo.title,
+    homePage: "https://anime.nicovideo.jp/detail/overlord-anime4/index.html",
   }
 
   await autoDownloadDanmaku(page, config)
