@@ -19,10 +19,47 @@ test.beforeEach(async ({ page }) => {
   )
 })
 
-test("陰の実力者になりたくて", async ({ page }, testInfo) => {
+test("無職転生Ⅱ", async ({ page }, testInfo) => {
   const config = {
     seriesName: testInfo.title,
-    homePage: "https://anime.nicovideo.jp/detail/shadow-garden2/index.html",
+    homePage: "https://anime.nicovideo.jp/detail/mushokutensei-2ki/index.html",
+  }
+
+  await autoDownloadDanmaku(page, config)
+})
+
+test("政宗くんのリベンジR", async ({ page }, testInfo) => {
+  const config = {
+    seriesName: testInfo.title,
+    homePage: "https://anime.nicovideo.jp/detail/masamune-tv2/index.html",
+  }
+
+  await autoDownloadDanmaku(page, config)
+})
+
+test("てんぷる", async ({ page }, testInfo) => {
+  const config = {
+    seriesName: testInfo.title,
+    homePage: "https://anime.nicovideo.jp/detail/temple-anime/index.html",
+  }
+
+  await autoDownloadDanmaku(page, config)
+})
+
+test("英雄教室", async ({ page }, testInfo) => {
+  const config = {
+    seriesName: testInfo.title,
+    homePage:
+      "https://anime.nicovideo.jp/detail/eiyukyoushitsu-anime/index.html",
+  }
+
+  await autoDownloadDanmaku(page, config)
+})
+
+test("白聖女と黒牧師", async ({ page }, testInfo) => {
+  const config = {
+    seriesName: testInfo.title,
+    homePage: "https://anime.nicovideo.jp/detail/shiroseijyo-anime/index.html",
   }
 
   await autoDownloadDanmaku(page, config)
