@@ -19,10 +19,18 @@ test.beforeEach(async ({ page }) => {
   )
 })
 
-test("陰の実力者になりたくて", async ({ page }, testInfo) => {
+test("怪人開発部の黒井津さん", async ({ page }, testInfo) => {
   const config = {
     seriesName: testInfo.title,
-    homePage: "https://anime.nicovideo.jp/detail/shadow-garden2/index.html",
+    homePage: "https://anime.nicovideo.jp/detail/kuroitsusan-anime/index.html",
+  }
+
+  await autoDownloadDanmaku(page, config)
+})
+test("プリンセスコネクト！Re：Dive Season 2", async ({ page }, testInfo) => {
+  const config = {
+    seriesName: testInfo.title,
+    homePage: "https://anime.nicovideo.jp/detail/priconne-redive2/index.html",
   }
 
   await autoDownloadDanmaku(page, config)
