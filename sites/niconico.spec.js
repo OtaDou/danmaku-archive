@@ -19,10 +19,34 @@ test.beforeEach(async ({ page }) => {
   )
 })
 
-test("陰の実力者になりたくて", async ({ page }, testInfo) => {
+test("86-エイティシックス-", async ({ page }, testInfo) => {
   const config = {
     seriesName: testInfo.title,
-    homePage: "https://anime.nicovideo.jp/detail/shadow-garden2/index.html",
+    homePage: "https://anime.nicovideo.jp/detail/anime-86/index.html",
+  }
+
+  await autoDownloadDanmaku(page, config)
+})
+test("究極進化したフルダイブRPGが現実よりもクソゲーだったら", async ({ page }, testInfo) => {
+  const config = {
+    seriesName: testInfo.title,
+    homePage: "https://anime.nicovideo.jp/detail/fulldive-rpg/index.html",
+  }
+
+  await autoDownloadDanmaku(page, config)
+})
+test("シャドーハウス", async ({ page }, testInfo) => {
+  const config = {
+    seriesName: testInfo.title,
+    homePage: "https://anime.nicovideo.jp/detail/shadowshouse/index.html",
+  }
+
+  await autoDownloadDanmaku(page, config)
+})
+test("戦闘員、派遣します！", async ({ page }, testInfo) => {
+  const config = {
+    seriesName: testInfo.title,
+    homePage: "https://anime.nicovideo.jp/detail/kisaragi/index.html",
   }
 
   await autoDownloadDanmaku(page, config)
