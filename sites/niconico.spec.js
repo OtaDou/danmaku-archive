@@ -19,10 +19,34 @@ test.beforeEach(async ({ page }) => {
   )
 })
 
-test("陰の実力者になりたくて", async ({ page }, testInfo) => {
+test("世界最高の暗殺者、異世界貴族に転生する", async ({ page }, testInfo) => {
   const config = {
     seriesName: testInfo.title,
-    homePage: "https://anime.nicovideo.jp/detail/shadow-garden2/index.html",
+    homePage: "https://anime.nicovideo.jp/detail/ansatsu-kizoku/index.html",
+  }
+
+  await autoDownloadDanmaku(page, config)
+})
+test("吸血鬼すぐ死ぬ", async ({ page }, testInfo) => {
+  const config = {
+    seriesName: testInfo.title,
+    homePage: "https://anime.nicovideo.jp/detail/sugushinu/index.html",
+  }
+
+  await autoDownloadDanmaku(page, config)
+})
+test("takt op.Destiny", async ({ page }, testInfo) => {
+  const config = {
+    seriesName: testInfo.title,
+    homePage: "https://anime.nicovideo.jp/detail/takt-op-anime/index.html",
+  }
+
+  await autoDownloadDanmaku(page, config)
+})
+test("無職転生 ～異世界行ったら本気だす～第2クール", async ({ page }, testInfo) => {
+  const config = {
+    seriesName: testInfo.title,
+    homePage: "https://anime.nicovideo.jp/detail/mushokutensei2/index.html",
   }
 
   await autoDownloadDanmaku(page, config)
