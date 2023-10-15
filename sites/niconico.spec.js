@@ -19,10 +19,50 @@ test.beforeEach(async ({ page }) => {
   )
 })
 
-test("陰の実力者になりたくて", async ({ page }, testInfo) => {
+test("神様になった日", async ({ page }, testInfo) => {
   const config = {
     seriesName: testInfo.title,
-    homePage: "https://anime.nicovideo.jp/detail/shadow-garden2/index.html",
+    homePage: "https://anime.nicovideo.jp/detail/kamisama-day/index.html",
+  }
+
+  await autoDownloadDanmaku(page, config)
+})
+test("ダンジョンに出会いを求めるのは間違っているだろうかⅢ", async ({ page }, testInfo) => {
+  const config = {
+    seriesName: testInfo.title,
+    homePage: "https://anime.nicovideo.jp/detail/danmachi3/index.html",
+  }
+
+  await autoDownloadDanmaku(page, config)
+})
+test("ひぐらしのなく頃に業", async ({ page }, testInfo) => {
+  const config = {
+    seriesName: testInfo.title,
+    homePage: "https://anime.nicovideo.jp/detail/higurashianime/index.html",
+  }
+
+  await autoDownloadDanmaku(page, config)
+})
+test("魔女の旅々", async ({ page }, testInfo) => {
+  const config = {
+    seriesName: testInfo.title,
+    homePage: "https://anime.nicovideo.jp/detail/majotabi/index.html",
+  }
+
+  await autoDownloadDanmaku(page, config)
+})
+test("魔法科高校の劣等生 来訪者編", async ({ page }, testInfo) => {
+  const config = {
+    seriesName: testInfo.title,
+    homePage: "https://anime.nicovideo.jp/detail/mahouka2/index.html",
+  }
+
+  await autoDownloadDanmaku(page, config)
+})
+test("無能なナナ", async ({ page }, testInfo) => {
+  const config = {
+    seriesName: testInfo.title,
+    homePage: "https://anime.nicovideo.jp/detail/munounanana/index.html",
   }
 
   await autoDownloadDanmaku(page, config)
