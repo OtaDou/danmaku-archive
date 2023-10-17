@@ -19,10 +19,11 @@ test.beforeEach(async ({ page }) => {
   )
 })
 
-test("TITLE1", async ({ page }, testInfo) => {
+test("Re：ゼロから始める異世界生活 2nd season", async ({ page }, testInfo) => {
   const config = {
     seriesName: testInfo.title,
-    homePage: "https://anime.nicovideo.jp/detail/XXXXX/index.html",
+    selector: `a.thumb_anchor.g-video-link`,
+    homePage: "https://ch.nicovideo.jp/re-zero2-anime",
   }
 
   await autoDownloadDanmaku(page, config)
@@ -32,7 +33,7 @@ async function autoDownloadDanmaku(page, config) {
   await page.route("**/*.{png,jpg,jpeg}", (route) => route.abort()) //No image
   await page.goto(config.homePage, { waitUntil: "domcontentloaded" })
 
-  const links = await getVideoLinks(page)
+  const links = await getVideoLinks(page, config.selector)
 
   const seriesRecords = readHistory(config.seriesName)
 
@@ -44,31 +45,24 @@ async function autoDownloadDanmaku(page, config) {
 
   for await (const link of newLinks) {
     await page.goto(link, { waitUntil: "domcontentloaded" })
-    const title = (await page.title()).replace(" - ニコニコ動画", "").trim()
+    let title = (await page.title()).replace(" - ニコニコ動画", "").trim()
+    title = reservedCharReplace(title)
     await Promise.all([
       page.reload({ waitUntil: "domcontentloaded" }),
       page.waitForResponse(
-        async (res) => {
-          return niconicoCommentsHandler(res, config, title, link)
-        },
-        {
-          timeout: 30_000,
-        }
+        async (res) => niconicoCommentsHandler(res, config, title, link),
+        { timeout: 30_000 }
       ),
     ])
   }
 }
 
-async function getVideoLinks(page, freeOnly = false) {
-  let anchors = page.locator(VIDEO_SELECTOR)
-  if (freeOnly)
-    anchors = anchors.filter({
-      has: page.locator(`[data-video-type="free"]`),
-    })
-
-  return await anchors.evaluateAll((els) =>
+async function getVideoLinks(page, selector = VIDEO_SELECTOR) {
+  let anchors = page.locator(selector)
+  const links = await anchors.evaluateAll((els) =>
     els.map((e) => e.getAttribute("href"))
   )
+  return links.filter((v, i, arr) => arr.indexOf(v) === i)
 }
 
 async function niconicoCommentsHandler(res, config, title, url) {
@@ -97,6 +91,10 @@ async function niconicoCommentsHandler(res, config, title, url) {
     addRecord(config.seriesName, bangumiTitle, url)
   }
   return isComment
+}
+
+function reservedCharReplace(str) {
+  return str.replace(":", "：")
 }
 
 async function addUserCookie(page, userSession, sessionSecure) {
