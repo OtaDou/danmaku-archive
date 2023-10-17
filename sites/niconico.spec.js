@@ -19,10 +19,42 @@ test.beforeEach(async ({ page }) => {
   )
 })
 
-test("陰の実力者になりたくて", async ({ page }, testInfo) => {
+test("盾の勇者の成り上がり Season2", async ({ page }, testInfo) => {
   const config = {
     seriesName: testInfo.title,
-    homePage: "https://anime.nicovideo.jp/detail/shadow-garden2/index.html",
+    homePage: "https://anime.nicovideo.jp/detail/shieldhero-anime2/index.html",
+  }
+
+  await autoDownloadDanmaku(page, config)
+})
+test("阿波連さんははかれない", async ({ page }, testInfo) => {
+  const config = {
+    seriesName: testInfo.title,
+    homePage: "https://anime.nicovideo.jp/detail/aharen-pr/index.html",
+  }
+
+  await autoDownloadDanmaku(page, config)
+})
+test("魔法使い黎明期", async ({ page }, testInfo) => {
+  const config = {
+    seriesName: testInfo.title,
+    homePage: "https://anime.nicovideo.jp/detail/reimeiki/index.html",
+  }
+
+  await autoDownloadDanmaku(page, config)
+})
+test("乙女ゲー世界はモブに厳しい世界です", async ({ page }, testInfo) => {
+  const config = {
+    seriesName: testInfo.title,
+    homePage: "https://anime.nicovideo.jp/detail/mobseka/index.html",
+  }
+
+  await autoDownloadDanmaku(page, config)
+})
+test("かぐや様は告らせたい-ウルトラロマンティック", async ({ page }, testInfo) => {
+  const config = {
+    seriesName: testInfo.title,
+    homePage: "https://anime.nicovideo.jp/detail/kaguya-love3/index.html",
   }
 
   await autoDownloadDanmaku(page, config)
