@@ -19,10 +19,10 @@ test.beforeEach(async ({ page }) => {
   )
 })
 
-test("陰の実力者になりたくて", async ({ page }, testInfo) => {
+test("不徳のギルド", async ({ page }, testInfo) => {
   const config = {
     seriesName: testInfo.title,
-    homePage: "https://anime.nicovideo.jp/detail/shadow-garden2/index.html",
+    homePage: "https://anime.nicovideo.jp/detail/futoku-no-anime/index.html",
   }
 
   await autoDownloadDanmaku(page, config)
