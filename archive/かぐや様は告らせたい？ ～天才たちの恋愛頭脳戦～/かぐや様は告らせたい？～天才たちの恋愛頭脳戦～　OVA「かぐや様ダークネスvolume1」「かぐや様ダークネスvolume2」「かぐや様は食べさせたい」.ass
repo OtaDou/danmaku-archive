@@ -1,0 +1,22 @@
+[Script Info]
+Title: かぐや様は告らせたい？～天才たちの恋愛頭脳戦～　OVA「かぐや様ダークネスvolume1」「かぐや様ダークネスvolume2」「かぐや様は食べさせたい」
+Original Script: https://www.nicovideo.jp/watch/so40256761
+ScriptType: v4.00+
+Collisions: Normal
+PlayResX: 560
+PlayResY: 420
+Timer: 100.0000
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Fix,Microsoft YaHei,25,&H66FFFFFF,&H66FFFFFF,&H66000000,&H66000000,1,0,0,0,100,100,0,0,1,2,0,2,20,20,2,0
+Style: Rtl,Microsoft YaHei,25,&H66FFFFFF,&H66FFFFFF,&H66000000,&H66000000,1,0,0,0,100,100,0,0,1,2,0,2,20,20,2,0
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,00:00:00.95,00:00:08.95,Rtl,,20,20,2,,{\move(610,25,-50,25)}課金余裕
+Dialogue: 0,00:00:03.12,00:00:11.12,Rtl,,20,20,2,,{\move(610,25,-50,25)}課金した
+Dialogue: 0,00:03:37.94,00:03:45.94,Rtl,,20,20,2,,{\move(722.5,25,-162.5,25)}ギャグだったかもしれねぇ…
+Dialogue: 0,00:04:06.15,00:04:14.15,Rtl,,20,20,2,,{\move(660,25,-100,25)}そうはならんやろ
+Dialogue: 0,00:22:54.88,00:23:02.88,Rtl,,20,20,2,,{\move(872.5,25,-312.5,25)}次の2期一挙時にはこれもボーナストラックで是非に！
+Dialogue: 0,00:22:56.42,00:23:04.42,Rtl,,20,20,2,,{\move(585,50,-25,50)}よき
