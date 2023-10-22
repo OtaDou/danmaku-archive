@@ -35,6 +35,97 @@ MPL-2.0
 
 ## Season Index
 <details>
+	<summary>2018-autumn <a href="https://github.com/OtaDou/danmaku-archive/archive/refs/heads/2018-autumn.zip">zip</a></summary>
+
+| NAME | EPISODE |
+| --- | --- |
+| うちのメイドがウザすぎる！ | 12 |
+| ゴブリンスレイヤー | 13 |
+| 青春ブタ野郎はバニーガール先輩の夢を見ない | 13 |
+| ゾンビランドサガ | 12 |
+| メルクストーリア -無気力少年と瓶の中の少女- | 12 |
+</details>
+<details>
+	<summary>2018-summer <a href="https://github.com/OtaDou/danmaku-archive/archive/refs/heads/2018-summer.zip">zip</a></summary>
+
+| NAME | EPISODE |
+| --- | --- |
+| オーバーロードⅢ | 13 |
+| あそびあそばせ | 12 |
+| ちおちゃんの通学路 | 12 |
+</details>
+<details>
+	<summary>2019-autumn <a href="https://github.com/OtaDou/danmaku-archive/archive/refs/heads/2019-autumn.zip">zip</a></summary>
+
+| NAME | EPISODE |
+| --- | --- |
+| 俺を好きなのはお前だけかよ | 12 |
+| 慎重勇者 ～この勇者が俺TUEEEくせに慎重すぎる～ | 13 |
+| 旗揚！けものみち | 12 |
+</details>
+<details>
+	<summary>2019-spring <a href="https://github.com/OtaDou/danmaku-archive/archive/refs/heads/2019-spring.zip">zip</a></summary>
+
+| NAME | EPISODE |
+| --- | --- |
+| この世の果てで恋を唄う少女YU-NO | 26 |
+| ストライクウィッチーズ 501部隊発進しますっ！ | 12 |
+| 続・終物語 | 7 |
+</details>
+<details>
+	<summary>2019-summer <a href="https://github.com/OtaDou/danmaku-archive/archive/refs/heads/2019-summer.zip">zip</a></summary>
+
+| NAME | EPISODE |
+| --- | --- |
+| ソウナンですか？ | 12 |
+| ダンジョンに出会いを求めるのは間違っているだろうかⅡ | 13 |
+</details>
+<details>
+	<summary>2019-winter <a href="https://github.com/OtaDou/danmaku-archive/archive/refs/heads/2019-winter.zip">zip</a></summary>
+
+| NAME | EPISODE |
+| --- | --- |
+| かぐや様は告らせたい～天才たちの恋愛頭脳戦～ | 12 |
+| 盾の勇者の成り上がり | 25 |
+</details>
+<details>
+	<summary>2020-autumn <a href="https://github.com/OtaDou/danmaku-archive/archive/refs/heads/2020-autumn.zip">zip</a></summary>
+
+| NAME | EPISODE |
+| --- | --- |
+| 神様になった日 | 12 |
+| ダンジョンに出会いを求めるのは間違っているだろうかⅢ | 13 |
+| ひぐらしのなく頃に業 | 24 |
+| 魔女の旅々 | 12 |
+| 魔法科高校の劣等生 来訪者編 | 13 |
+| 無能なナナ | 14 |
+</details>
+<details>
+	<summary>2020-spring <a href="https://github.com/OtaDou/danmaku-archive/archive/refs/heads/2020-spring.zip">zip</a></summary>
+
+| NAME | EPISODE |
+| --- | --- |
+| かくしごと | 12 |
+| かぐや様は告らせたい？ ～天才たちの恋愛頭脳戦～ | 13 |
+| プリンセスコネクト！ Re：Dive | 13 |
+</details>
+<details>
+	<summary>2020-summer <a href="https://github.com/OtaDou/danmaku-archive/archive/refs/heads/2020-summer.zip">zip</a></summary>
+
+| NAME | EPISODE |
+| --- | --- |
+| Re：ゼロから始める異世界生活 2nd season | 25 |
+</details>
+<details>
+	<summary>2020-winter <a href="https://github.com/OtaDou/danmaku-archive/archive/refs/heads/2020-winter.zip">zip</a></summary>
+
+| NAME | EPISODE |
+| --- | --- |
+| Re：ゼロから始める異世界生活 新編集版 | 25 |
+| 群れなせ！シートン学園 | 12 |
+| 異種族レビュアーズ | 12 |
+</details>
+<details>
 	<summary>2021-autumn <a href="https://github.com/OtaDou/danmaku-archive/archive/refs/heads/2021-autumn.zip">zip</a></summary>
 
 | NAME | EPISODE |
@@ -64,6 +155,32 @@ MPL-2.0
 | 探偵はもう、死んでいる。 | 12 |
 | 魔法科高校の優等生 | 13 |
 | 迷宮ブラックカンパニー | 12 |
+</details>
+<details>
+	<summary>2021-winter <a href="https://github.com/OtaDou/danmaku-archive/archive/refs/heads/2021-winter.zip">zip</a></summary>
+
+| NAME | EPISODE |
+| --- | --- |
+| 回復術士のやり直し | 12 |
+| 蜘蛛ですが、なにか？ | 24 |
+</details>
+<details>
+	<summary>2022-autumn <a href="https://github.com/OtaDou/danmaku-archive/archive/refs/heads/2022-autumn.zip">zip</a></summary>
+
+| NAME | EPISODE |
+| --- | --- |
+| 不徳のギルド | 12 |
+</details>
+<details>
+	<summary>2022-spring <a href="https://github.com/OtaDou/danmaku-archive/archive/refs/heads/2022-spring.zip">zip</a></summary>
+
+| NAME | EPISODE |
+| --- | --- |
+| 盾の勇者の成り上がり Season2 | 13 |
+| 阿波連さんははかれない | 12 |
+| 魔法使い黎明期 | 12 |
+| 乙女ゲー世界はモブに厳しい世界です | 13 |
+| かぐや様は告らせたい-ウルトラロマンティック | 13 |
 </details>
 <details>
 	<summary>2022-summer <a href="https://github.com/OtaDou/danmaku-archive/archive/refs/heads/2022-summer.zip">zip</a></summary>
