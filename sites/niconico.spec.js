@@ -19,20 +19,29 @@ test.beforeEach(async ({ page }) => {
   )
 })
 
-test("archive_folder_name1", async ({ page }, testInfo) => {
+test("俺を好きなのはお前だけかよ", async ({ page }, testInfo) => {
   const config = {
     seriesName: testInfo.title,
-    homePage: "https://anime.nicovideo.jp/detail/XXXXX/index.html",
+    selector: `a.thumb_anchor.g-video-link`,
+    homePage: "https://ch.nicovideo.jp/ore_ski",
   }
 
   await autoDownloadDanmaku(page, config)
 })
-
-test("archive_folder_name2", async ({ page }, testInfo) => {
+test("慎重勇者 ～この勇者が俺TUEEEくせに慎重すぎる～", async ({ page }, testInfo) => {
   const config = {
     seriesName: testInfo.title,
     selector: `a.thumb_anchor.g-video-link`,
-    homePage: "https://ch.nicovideo.jp/XXXXXXX",
+    homePage: "https://ch.nicovideo.jp/shincho-yusha",
+  }
+
+  await autoDownloadDanmaku(page, config)
+})
+test("旗揚！けものみち", async ({ page }, testInfo) => {
+  const config = {
+    seriesName: testInfo.title,
+    selector: `a.thumb_anchor.g-video-link`,
+    homePage: "https://ch.nicovideo.jp/hataage-kemonomichi",
   }
 
   await autoDownloadDanmaku(page, config)
