@@ -19,20 +19,29 @@ test.beforeEach(async ({ page }) => {
   )
 })
 
-test("archive_folder_name1", async ({ page }, testInfo) => {
+test("この世の果てで恋を唄う少女YU-NO", async ({ page }, testInfo) => {
   const config = {
     seriesName: testInfo.title,
-    homePage: "https://anime.nicovideo.jp/detail/XXXXX/index.html",
+    selector: `a.thumb_anchor.g-video-link`,
+    homePage: "https://ch.nicovideo.jp/yu-no",
   }
 
   await autoDownloadDanmaku(page, config)
 })
-
-test("archive_folder_name2", async ({ page }, testInfo) => {
+test("ストライクウィッチーズ 501部隊発進しますっ！", async ({ page }, testInfo) => {
   const config = {
     seriesName: testInfo.title,
     selector: `a.thumb_anchor.g-video-link`,
-    homePage: "https://ch.nicovideo.jp/XXXXXXX",
+    homePage: "https://ch.nicovideo.jp/501_takeoff",
+  }
+
+  await autoDownloadDanmaku(page, config)
+})
+test("続・終物語", async ({ page }, testInfo) => {
+  const config = {
+    seriesName: testInfo.title,
+    selector: `a.thumb_anchor.g-video-link`,
+    homePage: "https://ch.nicovideo.jp/zokuowarimonogatari",
   }
 
   await autoDownloadDanmaku(page, config)
