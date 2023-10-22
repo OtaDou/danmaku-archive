@@ -19,24 +19,52 @@ test.beforeEach(async ({ page }) => {
   )
 })
 
-test("archive_folder_name1", async ({ page }, testInfo) => {
-  const config = {
-    seriesName: testInfo.title,
-    homePage: "https://anime.nicovideo.jp/detail/XXXXX/index.html",
-  }
-
-  await autoDownloadDanmaku(page, config)
-})
-
-test("archive_folder_name2", async ({ page }, testInfo) => {
+test("うちのメイドがウザすぎる！", async ({ page }, testInfo) => {
   const config = {
     seriesName: testInfo.title,
     selector: `a.thumb_anchor.g-video-link`,
-    homePage: "https://ch.nicovideo.jp/XXXXXXX",
+    homePage: "https://ch.nicovideo.jp/uzamaid",
   }
 
   await autoDownloadDanmaku(page, config)
 })
+test("ゴブリンスレイヤー", async ({ page }, testInfo) => {
+  const config = {
+    seriesName: testInfo.title,
+    selector: `a.thumb_anchor.g-video-link`,
+    homePage: "https://ch.nicovideo.jp/goblin-slayer",
+  }
+
+  await autoDownloadDanmaku(page, config)
+})
+test("青春ブタ野郎はバニーガール先輩の夢を見ない", async ({ page }, testInfo) => {
+  const config = {
+    seriesName: testInfo.title,
+    selector: `a.thumb_anchor.g-video-link`,
+    homePage: "https://ch.nicovideo.jp/ao-buta",
+  }
+
+  await autoDownloadDanmaku(page, config)
+})
+test("ゾンビランドサガ", async ({ page }, testInfo) => {
+  const config = {
+    seriesName: testInfo.title,
+    selector: `a.thumb_anchor.g-video-link`,
+    homePage: "https://ch.nicovideo.jp/zombielandsaga",
+  }
+
+  await autoDownloadDanmaku(page, config)
+})
+test("メルクストーリア -無気力少年と瓶の中の少女-", async ({ page }, testInfo) => {
+  const config = {
+    seriesName: testInfo.title,
+    selector: `a.thumb_anchor.g-video-link`,
+    homePage: "https://ch.nicovideo.jp/mercstoria",
+  }
+
+  await autoDownloadDanmaku(page, config)
+})
+
 
 async function autoDownloadDanmaku(page, config) {
   await page.route("**/*.{png,jpg,jpeg}", (route) => route.abort()) //No image
