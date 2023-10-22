@@ -19,20 +19,20 @@ test.beforeEach(async ({ page }) => {
   )
 })
 
-test("archive_folder_name1", async ({ page }, testInfo) => {
+test("かぐや様は告らせたい～天才たちの恋愛頭脳戦～", async ({ page }, testInfo) => {
   const config = {
     seriesName: testInfo.title,
-    homePage: "https://anime.nicovideo.jp/detail/XXXXX/index.html",
+    selector: `a.thumb_anchor.g-video-link`,
+    homePage: "https://ch.nicovideo.jp/kaguya_love",
   }
 
   await autoDownloadDanmaku(page, config)
 })
-
-test("archive_folder_name2", async ({ page }, testInfo) => {
+test("盾の勇者の成り上がり", async ({ page }, testInfo) => {
   const config = {
     seriesName: testInfo.title,
     selector: `a.thumb_anchor.g-video-link`,
-    homePage: "https://ch.nicovideo.jp/XXXXXXX",
+    homePage: "https://ch.nicovideo.jp/shieldhero-anime",
   }
 
   await autoDownloadDanmaku(page, config)
