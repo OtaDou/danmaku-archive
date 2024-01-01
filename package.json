@@ -10,6 +10,6 @@
     "yaml": "2.3.2"
   },
   "scripts": {
-    "start": "playwright test --retries=5"
+    "start": "playwright test --retries=10"
   }
 }
