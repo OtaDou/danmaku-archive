@@ -3,7 +3,7 @@ import { test } from "@playwright/test"
 import { readHistory, addRecord, saveFile } from "./utils"
 import { defaultOptions, parser, toLayout, toAss } from "../src/index.js"
 
-const INTERCEPT_URL_REGEX = /nvcomment.nicovideo.jp\/(api\.json|v1\/threads)/
+const INTERCEPT_URL_REGEX = /nv-?comment.nicovideo.jp\/(api\.json|v1\/threads)/
 const VIDEO_SELECTOR = `section >> nth=0 >> a[href^="https://www.nicovideo.jp/watch"]`
 const SAVE_BASE_PATH = `archive/`
 
