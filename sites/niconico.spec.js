@@ -19,20 +19,20 @@ test.beforeEach(async ({ page }) => {
   )
 })
 
-test("archive_folder_name1", async ({ page }, testInfo) => {
+test("ようこそ実力至上主義の教室へ", async ({ page }, testInfo) => {
   const config = {
     seriesName: testInfo.title,
-    homePage: "https://anime.nicovideo.jp/detail/XXXXX/index.html",
+    selector: `a.thumb_anchor.g-video-link`,
+    homePage: "https://ch.nicovideo.jp/you-zitsu",
   }
 
   await autoDownloadDanmaku(page, config)
 })
-
-test("archive_folder_name2", async ({ page }, testInfo) => {
+test("終物語2", async ({ page }, testInfo) => {
   const config = {
     seriesName: testInfo.title,
     selector: `a.thumb_anchor.g-video-link`,
-    homePage: "https://ch.nicovideo.jp/XXXXXXX",
+    homePage: "https://ch.nicovideo.jp/owarimonogatari2",
   }
 
   await autoDownloadDanmaku(page, config)
