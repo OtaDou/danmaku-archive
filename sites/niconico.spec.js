@@ -19,20 +19,11 @@ test.beforeEach(async ({ page }) => {
   )
 })
 
-test("archive_folder_name1", async ({ page }, testInfo) => {
-  const config = {
-    seriesName: testInfo.title,
-    homePage: "https://anime.nicovideo.jp/detail/XXXXX/index.html",
-  }
-
-  await autoDownloadDanmaku(page, config)
-})
-
-test("archive_folder_name2", async ({ page }, testInfo) => {
+test("この素晴らしい世界に祝福を！", async ({ page }, testInfo) => {
   const config = {
     seriesName: testInfo.title,
     selector: `a.thumb_anchor.g-video-link`,
-    homePage: "https://ch.nicovideo.jp/XXXXXXX",
+    homePage: "https://ch.nicovideo.jp/konosuba",
   }
 
   await autoDownloadDanmaku(page, config)
