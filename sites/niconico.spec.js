@@ -3,7 +3,7 @@ import { test } from "@playwright/test"
 import { readHistory, addRecord, saveFile } from "./utils"
 import { defaultOptions, parser, toLayout, toAss } from "../src/index.js"
 
-const INTERCEPT_URL_REGEX = /nvcomment.nicovideo.jp\/(api\.json|v1\/threads)/
+const INTERCEPT_URL_REGEX = /nv-?comment.nicovideo.jp\/(api\.json|v1\/threads)/
 const VIDEO_SELECTOR = `section >> nth=0 >> a[href^="https://www.nicovideo.jp/watch"]`
 const SAVE_BASE_PATH = `archive/`
 
@@ -19,20 +19,42 @@ test.beforeEach(async ({ page }) => {
   )
 })
 
-test("archive_folder_name1", async ({ page }, testInfo) => {
+test("オーバーテイク！", async ({ page }, testInfo) => {
   const config = {
     seriesName: testInfo.title,
-    homePage: "https://anime.nicovideo.jp/detail/XXXXX/index.html",
+    homePage: "https://anime.nicovideo.jp/detail/komaki-motors/index.html",
   }
 
   await autoDownloadDanmaku(page, config)
 })
-
-test("archive_folder_name2", async ({ page }, testInfo) => {
+test("陰の実力者になりたくて！ 2nd season", async ({ page }, testInfo) => {
   const config = {
     seriesName: testInfo.title,
-    selector: `a.thumb_anchor.g-video-link`,
-    homePage: "https://ch.nicovideo.jp/XXXXXXX",
+    homePage: "https://anime.nicovideo.jp/detail/shadow-garden2/index.html",
+  }
+
+  await autoDownloadDanmaku(page, config)
+})
+test("君のことが大大大大大好きな100人の彼女", async ({ page }, testInfo) => {
+  const config = {
+    seriesName: testInfo.title,
+    homePage: "https://anime.nicovideo.jp/detail/hyakkano/index.html",
+  }
+
+  await autoDownloadDanmaku(page, config)
+})
+test("盾の勇者の成り上がり Season 3", async ({ page }, testInfo) => {
+  const config = {
+    seriesName: testInfo.title,
+    homePage: "https://anime.nicovideo.jp/detail/shieldhero-anime3/index.html",
+  }
+
+  await autoDownloadDanmaku(page, config)
+})
+test("ティアムーン帝国物語", async ({ page }, testInfo) => {
+  const config = {
+    seriesName: testInfo.title,
+    homePage: "https://anime.nicovideo.jp/detail/tearmoon-pr/index.html",
   }
 
   await autoDownloadDanmaku(page, config)
