@@ -35,6 +35,130 @@ MPL-2.0
 
 ## Season Index
 <details>
+	<summary>2012-autumn <a href="https://github.com/OtaDou/danmaku-archive/archive/refs/heads/2012-autumn.zip">zip</a></summary>
+
+| NAME | EPISODE |
+| --- | --- |
+| 猫物語(黒) | 4 |
+</details>
+<details>
+	<summary>2012-summer <a href="https://github.com/OtaDou/danmaku-archive/archive/refs/heads/2012-summer.zip">zip</a></summary>
+
+| NAME | EPISODE |
+| --- | --- |
+| ソードアート・オンライン | 25 |
+| 織田信奈の野望 | 12 |
+</details>
+<details>
+	<summary>2012-winter <a href="https://github.com/OtaDou/danmaku-archive/archive/refs/heads/2012-winter.zip">zip</a></summary>
+
+| NAME | EPISODE |
+| --- | --- |
+| 偽物語 | 11 |
+</details>
+<details>
+	<summary>2013-spring <a href="https://github.com/OtaDou/danmaku-archive/archive/refs/heads/2013-spring.zip">zip</a></summary>
+
+| NAME | EPISODE |
+| --- | --- |
+| 進撃の巨人 | 25 |
+</details>
+<details>
+	<summary>2013-summer <a href="https://github.com/OtaDou/danmaku-archive/archive/refs/heads/2013-summer.zip">zip</a></summary>
+
+| NAME | EPISODE |
+| --- | --- |
+| 物語シリーズセカンドシーズン | 31 |
+</details>
+<details>
+	<summary>2014-autumn <a href="https://github.com/OtaDou/danmaku-archive/archive/refs/heads/2014-autumn.zip">zip</a></summary>
+
+| NAME | EPISODE |
+| --- | --- |
+| 甘城ブリリアントパーク | 13 |
+| グリザイアの果実 | 13 |
+| 異能バトルは日常系のなかで | 12 |
+| 憑物語 | 4 |
+</details>
+<details>
+	<summary>2014-spring <a href="https://github.com/OtaDou/danmaku-archive/archive/refs/heads/2014-spring.zip">zip</a></summary>
+
+| NAME | EPISODE |
+| --- | --- |
+| ノーゲーム・ノーライフ | 12 |
+| 魔法科高校の劣等生 | 26 |
+</details>
+<details>
+	<summary>2014-winter <a href="https://github.com/OtaDou/danmaku-archive/archive/refs/heads/2014-winter.zip">zip</a></summary>
+
+| NAME | EPISODE |
+| --- | --- |
+| ニセコイ | 20 |
+| 生徒会役員共＊ | 13 |
+</details>
+<details>
+	<summary>2015-autumn <a href="https://github.com/OtaDou/danmaku-archive/archive/refs/heads/2015-autumn.zip">zip</a></summary>
+
+| NAME | EPISODE |
+| --- | --- |
+| 終物語 | 12 |
+</details>
+<details>
+	<summary>2015-spring <a href="https://github.com/OtaDou/danmaku-archive/archive/refs/heads/2015-spring.zip">zip</a></summary>
+
+| NAME | EPISODE |
+| --- | --- |
+| ダンジョンに出会いを求めるのは間違っているだろうか | 13 |
+| ニセコイ2 | 12 |
+| グリザイアの楽園 | 10 |
+</details>
+<details>
+	<summary>2015-summer <a href="https://github.com/OtaDou/danmaku-archive/archive/refs/heads/2015-summer.zip">zip</a></summary>
+
+| NAME | EPISODE |
+| --- | --- |
+| オーバーロード | 13 |
+| 六花の勇者 | 12 |
+| 城下町のダンデライオン | 12 |
+</details>
+<details>
+	<summary>2015-winter <a href="https://github.com/OtaDou/danmaku-archive/archive/refs/heads/2015-winter.zip">zip</a></summary>
+
+| NAME | EPISODE |
+| --- | --- |
+| デス・パレード | 12 |
+</details>
+<details>
+	<summary>2016-spring <a href="https://github.com/OtaDou/danmaku-archive/archive/refs/heads/2016-spring.zip">zip</a></summary>
+
+| NAME | EPISODE |
+| --- | --- |
+| 坂本ですが？ | 12 |
+</details>
+<details>
+	<summary>2016-winter <a href="https://github.com/OtaDou/danmaku-archive/archive/refs/heads/2016-winter.zip">zip</a></summary>
+
+| NAME | EPISODE |
+| --- | --- |
+| この素晴らしい世界に祝福を！ | 10 |
+</details>
+<details>
+	<summary>2017-summer <a href="https://github.com/OtaDou/danmaku-archive/archive/refs/heads/2017-summer.zip">zip</a></summary>
+
+| NAME | EPISODE |
+| --- | --- |
+| ようこそ実力至上主義の教室へ | 12 |
+| 終物語2 | 7 |
+</details>
+<details>
+	<summary>2017-winter <a href="https://github.com/OtaDou/danmaku-archive/archive/refs/heads/2017-winter.zip">zip</a></summary>
+
+| NAME | EPISODE |
+| --- | --- |
+| この素晴らしい世界に祝福を！2 | 10 |
+| 幼女戦記 | 13 |
+</details>
+<details>
 	<summary>2018-autumn <a href="https://github.com/OtaDou/danmaku-archive/archive/refs/heads/2018-autumn.zip">zip</a></summary>
 
 | NAME | EPISODE |
@@ -201,6 +325,17 @@ MPL-2.0
 | --- | --- |
 | 怪人開発部の黒井津さん | 12 |
 | プリンセスコネクト！Re：Dive Season 2 | 12 |
+</details>
+<details>
+	<summary>2023-autumn <a href="https://github.com/OtaDou/danmaku-archive/archive/refs/heads/2023-autumn.zip">zip</a></summary>
+
+| NAME | EPISODE |
+| --- | --- |
+| オーバーテイク！ | 12 |
+| 君のことが大大大大大好きな100人の彼女 | 12 |
+| 盾の勇者の成り上がり Season 3 | 12 |
+| ティアムーン帝国物語 | 12 |
+| 陰の実力者になりたくて！ 2nd season | 12 |
 </details>
 <details>
 	<summary>2023-spring <a href="https://github.com/OtaDou/danmaku-archive/archive/refs/heads/2023-spring.zip">zip</a></summary>
