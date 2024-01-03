@@ -28,11 +28,11 @@ test("archive_folder_name1", async ({ page }, testInfo) => {
   await autoDownloadDanmaku(page, config)
 })
 
-test("archive_folder_name2", async ({ page }, testInfo) => {
+test("進撃の巨人", async ({ page }, testInfo) => {
   const config = {
     seriesName: testInfo.title,
     selector: `a.thumb_anchor.g-video-link`,
-    homePage: "https://ch.nicovideo.jp/XXXXXXX",
+    homePage: "https://ch.nicovideo.jp/shingeki",
   }
 
   await autoDownloadDanmaku(page, config)
