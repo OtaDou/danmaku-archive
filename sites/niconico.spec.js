@@ -19,20 +19,37 @@ test.beforeEach(async ({ page }) => {
   )
 })
 
-test("archive_folder_name1", async ({ page }, testInfo) => {
+test("ようこそ実力至上主義の教室へ 3rd Season", async ({ page }, testInfo) => {
   const config = {
     seriesName: testInfo.title,
-    homePage: "https://anime.nicovideo.jp/detail/XXXXX/index.html",
+    homePage: "https://anime.nicovideo.jp/detail/you-zitsu3/index.html",
   }
 
   await autoDownloadDanmaku(page, config)
 })
 
-test("archive_folder_name2", async ({ page }, testInfo) => {
+test("姫様“拷問”の時間です", async ({ page }, testInfo) => {
   const config = {
     seriesName: testInfo.title,
-    selector: `a.thumb_anchor.g-video-link`,
-    homePage: "https://ch.nicovideo.jp/XXXXXXX",
+    homePage: "https://anime.nicovideo.jp/detail/himesama-goumon/index.html",
+  }
+
+  await autoDownloadDanmaku(page, config)
+})
+
+test("愚かな天使は悪魔と踊る", async ({ page }, testInfo) => {
+  const config = {
+    seriesName: testInfo.title,
+    homePage: "https://anime.nicovideo.jp/detail/kanaten-anime/index.html",
+  }
+
+  await autoDownloadDanmaku(page, config)
+})
+
+test("治癒魔法の間違った使い方", async ({ page }, testInfo) => {
+  const config = {
+    seriesName: testInfo.title,
+    homePage: "https://anime.nicovideo.jp/detail/chiyumahou-anime/index.html",
   }
 
   await autoDownloadDanmaku(page, config)
