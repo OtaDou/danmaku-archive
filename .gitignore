@@ -1,0 +1,8 @@
+node_modules/
+playwright-report/
+test-results/
+yarn.lock
+pnpm-lock.yaml
+package-lock.json
+tests
+.env
