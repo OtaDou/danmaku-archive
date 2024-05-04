@@ -19,20 +19,11 @@ test.beforeEach(async ({ page }) => {
   )
 })
 
-test("archive_folder_name1", async ({ page }, testInfo) => {
+test("これはゾンビですか？", async ({ page }, testInfo) => {
   const config = {
     seriesName: testInfo.title,
-    homePage: "https://anime.nicovideo.jp/detail/XXXXX/index.html",
-  }
-
-  await autoDownloadDanmaku(page, config)
-})
-
-test("archive_folder_name2", async ({ page }, testInfo) => {
-  const config = {
-    seriesName: testInfo.title,
-    selector: `a.thumb_anchor.g-video-link`,
-    homePage: "https://ch.nicovideo.jp/XXXXXXX",
+    selector: `a.thumb_anchor.g-video-link span`,
+    homePage: "https://ch.nicovideo.jp/channel/ch279",
   }
 
   await autoDownloadDanmaku(page, config)
@@ -67,7 +58,7 @@ async function autoDownloadDanmaku(page, config) {
 }
 
 async function getVideoLinks(page, selector = VIDEO_SELECTOR) {
-  let anchors = page.locator(selector)
+  let anchors = page.locator(selector).locator("..")
   const links = await anchors.evaluateAll((els) =>
     els.map((e) => e.getAttribute("href"))
   )
