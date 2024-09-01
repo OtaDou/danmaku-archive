@@ -22,7 +22,7 @@ test.beforeEach(async ({ page }) => {
 test("無職転生Ⅱ", async ({ page }, testInfo) => {
   const config = {
     seriesName: testInfo.title,
-    homePage: "https://anime.nicovideo.jp/detail/mushokutensei-2ki/index.html",
+    homePage: "https://ch.nicovideo.jp/mushokutensei_2",
   }
 
   await autoDownloadDanmaku(page, config)
