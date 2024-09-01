@@ -19,20 +19,37 @@ test.beforeEach(async ({ page }) => {
   )
 })
 
-test("archive_folder_name1", async ({ page }, testInfo) => {
+test("この素晴らしい世界に祝福を！３", async ({ page }, testInfo) => {
   const config = {
     seriesName: testInfo.title,
-    homePage: "https://anime.nicovideo.jp/detail/XXXXX/index.html",
+    homePage: "https://ch.nicovideo.jp/konosuba_3rd",
   }
 
   await autoDownloadDanmaku(page, config)
 })
 
-test("archive_folder_name2", async ({ page }, testInfo) => {
+test("魔法科高校の劣等生 第3シーズン", async ({ page }, testInfo) => {
   const config = {
     seriesName: testInfo.title,
-    selector: `a.thumb_anchor.g-video-link`,
-    homePage: "https://ch.nicovideo.jp/XXXXXXX",
+    homePage: "https://ch.nicovideo.jp/mahouka_3rd",
+  }
+
+  await autoDownloadDanmaku(page, config)
+})
+
+test("じいさんばあさん若返る", async ({ page }, testInfo) => {
+  const config = {
+    seriesName: testInfo.title,
+    homePage: "https://ch.nicovideo.jp/jisanbasan",
+  }
+
+  await autoDownloadDanmaku(page, config)
+})
+
+test("変人のサラダボウル", async ({ page }, testInfo) => {
+  const config = {
+    seriesName: testInfo.title,
+    homePage: "https://ch.nicovideo.jp/hensara",
   }
 
   await autoDownloadDanmaku(page, config)
