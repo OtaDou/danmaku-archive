@@ -19,10 +19,28 @@ test.beforeEach(async ({ page }) => {
   )
 })
 
-test("陰の実力者になりたくて", async ({ page }, testInfo) => {
+test("かぐや様は告らせたい-ファーストキッスは終わらない", async ({ page }, testInfo) => {
   const config = {
     seriesName: testInfo.title,
-    homePage: "https://anime.nicovideo.jp/detail/shadow-garden2/index.html",
+    homePage: "https://anime.nicovideo.jp/detail/kaguya-love4/index.html",
+  }
+
+  await autoDownloadDanmaku(page, config)
+})
+
+test("この素晴らしい世界に爆焔を", async ({ page }, testInfo) => {
+  const config = {
+    seriesName: testInfo.title,
+    homePage: "https://anime.nicovideo.jp/detail/konosuba-bakuen/index.html",
+  }
+
+  await autoDownloadDanmaku(page, config)
+})
+
+test("神無き世界のカミサマ活動", async ({ page }, testInfo) => {
+  const config = {
+    seriesName: testInfo.title,
+    homePage: "https://anime.nicovideo.jp/detail/kamikatsu-anime/index.html",
   }
 
   await autoDownloadDanmaku(page, config)
