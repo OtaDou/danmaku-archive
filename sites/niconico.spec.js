@@ -4,7 +4,7 @@ import { readHistory, addRecord, saveFile } from "./utils"
 import { defaultOptions, parser, toLayout, toAss } from "../src/index.js"
 
 const INTERCEPT_URL_REGEX = /nv-?comment.nicovideo.jp\/(api\.json|v1\/threads)/
-const VIDEO_SELECTOR = `section >> nth=0 >> a[href^="https://www.nicovideo.jp/watch"]`
+const VIDEO_SELECTOR = `a[href^="https://www.nicovideo.jp/watch"]`
 const SAVE_BASE_PATH = `archive/`
 
 const danmakuConifg = {
@@ -19,20 +19,19 @@ test.beforeEach(async ({ page }) => {
   )
 })
 
-test("archive_folder_name1", async ({ page }, testInfo) => {
+test("しかのこのこのここしたんたん", async ({ page }, testInfo) => {
   const config = {
     seriesName: testInfo.title,
-    homePage: "https://anime.nicovideo.jp/detail/XXXXX/index.html",
+    homePage: "https://www.nicovideo.jp/series/480711",
   }
 
   await autoDownloadDanmaku(page, config)
 })
 
-test("archive_folder_name2", async ({ page }, testInfo) => {
+test("ハズレ枠の【状態異常スキル】で最強になった俺がすべてを蹂躙するまで", async ({ page }, testInfo) => {
   const config = {
     seriesName: testInfo.title,
-    selector: `a.thumb_anchor.g-video-link`,
-    homePage: "https://ch.nicovideo.jp/XXXXXXX",
+    homePage: "https://www.nicovideo.jp/series/480094",
   }
 
   await autoDownloadDanmaku(page, config)
