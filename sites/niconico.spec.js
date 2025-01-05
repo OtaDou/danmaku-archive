@@ -94,13 +94,16 @@ async function niconicoCommentsHandler(res, config, title, url) {
     console.log(`saving...${bangumiTitle}.ass`)
     const seriesFolder = SAVE_BASE_PATH + config.seriesName + "/"
     // save ass danmaku
-    saveFile(seriesFolder, bangumiTitle, "ass", ass)
+    saveFile(seriesFolder, bangumiTitle, "ass", wordFilter(ass))
     // save raw json
     saveFile(seriesFolder, bangumiTitle, "json", String(rawBody))
     addRecord(config.seriesName, bangumiTitle, url)
   }
   return isComment
 }
+
+const wordFilter = (text, filter = /近平|共産|中共/) =>
+  text.split('\n').filter(line => !filter.test(line)).join('\n')
 
 function reservedCharReplace(str) {
   return str.replace(":", "：")
