@@ -55,6 +55,10 @@ async function autoDownloadDanmaku(page, config) {
   for await (const link of newLinks) {
     await page.goto(link, { waitUntil: "domcontentloaded" })
     let title = (await page.title()).replace(" - ニコニコ動画", "").trim()
+    if (/特別番組|総集編|直前特番/.test(title)) {
+      console.log(`skip... ${title}`)
+      continue
+    }
     title = reservedCharReplace(title)
     await Promise.all([
       page.reload({ waitUntil: "domcontentloaded" }),
