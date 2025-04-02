@@ -19,20 +19,51 @@ test.beforeEach(async ({ page }) => {
   )
 })
 
-test("archive_folder_name1", async ({ page }, testInfo) => {
+test("妻、小学生になる。", async ({ page }, testInfo) => {
   const config = {
     seriesName: testInfo.title,
-    homePage: "https://anime.nicovideo.jp/detail/XXXXX/index.html",
+    selector: `a.thumb_anchor.g-video-link`,
+    homePage: "https://ch.nicovideo.jp/tsumasho-anime",
   }
 
   await autoDownloadDanmaku(page, config)
 })
 
-test("archive_folder_name2", async ({ page }, testInfo) => {
+test("ダンジョンに出会いを求めるのは間違っているだろうかV　豊穣の女神篇", async ({ page }, testInfo) => {
   const config = {
     seriesName: testInfo.title,
     selector: `a.thumb_anchor.g-video-link`,
-    homePage: "https://ch.nicovideo.jp/XXXXXXX",
+    homePage: "https://ch.nicovideo.jp/danmachi_V",
+  }
+
+  await autoDownloadDanmaku(page, config)
+})
+
+test("甘神さんちの縁結び", async ({ page }, testInfo) => {
+  const config = {
+    seriesName: testInfo.title,
+    selector: `a.thumb_anchor.g-video-link`,
+    homePage: "https://ch.nicovideo.jp/amagami-anime",
+  }
+
+  await autoDownloadDanmaku(page, config)
+})
+
+test("ひとりぼっちの異世界攻略", async ({ page }, testInfo) => {
+  const config = {
+    seriesName: testInfo.title,
+    selector: `a.thumb_anchor.g-video-link`,
+    homePage: "https://ch.nicovideo.jp/bocchi-kouryaku",
+  }
+
+  await autoDownloadDanmaku(page, config)
+})
+
+test("ダンダダン", async ({ page }, testInfo) => {
+  const config = {
+    seriesName: testInfo.title,
+    selector: `a.thumb_anchor.g-video-link`,
+    homePage: "https://ch.nicovideo.jp/anime-dandadan",
   }
 
   await autoDownloadDanmaku(page, config)
@@ -94,13 +125,16 @@ async function niconicoCommentsHandler(res, config, title, url) {
     console.log(`saving...${bangumiTitle}.ass`)
     const seriesFolder = SAVE_BASE_PATH + config.seriesName + "/"
     // save ass danmaku
-    saveFile(seriesFolder, bangumiTitle, "ass", ass)
+    saveFile(seriesFolder, bangumiTitle, "ass", wordFilter(ass))
     // save raw json
     saveFile(seriesFolder, bangumiTitle, "json", String(rawBody))
     addRecord(config.seriesName, bangumiTitle, url)
   }
   return isComment
 }
+
+const wordFilter = (text, filter = /近平|共産|中共/) =>
+  text.split('\n').filter(line => !filter.test(line)).join('\n')
 
 function reservedCharReplace(str) {
   return str.replace(":", "：")
