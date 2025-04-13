@@ -19,20 +19,46 @@ test.beforeEach(async ({ page }) => {
   )
 })
 
-test("archive_folder_name1", async ({ page }, testInfo) => {
+test("悪役令嬢転生おじさん", async ({ page }, testInfo) => {
   const config = {
     seriesName: testInfo.title,
-    homePage: "https://anime.nicovideo.jp/detail/XXXXX/index.html",
+    homePage: "https://anime.nicovideo.jp/detail/tensei-ojisan/index.html",
   }
 
   await autoDownloadDanmaku(page, config)
 })
 
-test("archive_folder_name2", async ({ page }, testInfo) => {
+test("アラフォー男の異世界通販", async ({ page }, testInfo) => {
   const config = {
     seriesName: testInfo.title,
-    selector: `a.thumb_anchor.g-video-link`,
-    homePage: "https://ch.nicovideo.jp/XXXXXXX",
+    homePage: "https://anime.nicovideo.jp/detail/arafo-tsuhan/index.html",
+  }
+
+  await autoDownloadDanmaku(page, config)
+})
+
+test("Aランクパーティを離脱した俺は、元教え子たちと迷宮深部を目指す", async ({ page }, testInfo) => {
+  const config = {
+    seriesName: testInfo.title,
+    homePage: "https://anime.nicovideo.jp/detail/arank-party-ridatsu/index.html",
+  }
+
+  await autoDownloadDanmaku(page, config)
+})
+
+test("クラスの大嫌いな女子と結婚することになった", async ({ page }, testInfo) => {
+  const config = {
+    seriesName: testInfo.title,
+    homePage: "https://anime.nicovideo.jp/detail/kura-kon/index.html",
+  }
+
+  await autoDownloadDanmaku(page, config)
+})
+
+test("君のことが大大大大大好きな100人の彼女 第2期", async ({ page }, testInfo) => {
+  const config = {
+    seriesName: testInfo.title,
+    homePage: "https://anime.nicovideo.jp/detail/hyakkano2/index.html",
   }
 
   await autoDownloadDanmaku(page, config)
@@ -55,6 +81,10 @@ async function autoDownloadDanmaku(page, config) {
   for await (const link of newLinks) {
     await page.goto(link, { waitUntil: "domcontentloaded" })
     let title = (await page.title()).replace(" - ニコニコ動画", "").trim()
+    if (/特別番組|総集編|直前特番/.test(title)) {
+      console.log(`skip... ${title}`)
+      continue
+    }
     title = reservedCharReplace(title)
     await Promise.all([
       page.reload({ waitUntil: "domcontentloaded" }),
@@ -71,7 +101,7 @@ async function getVideoLinks(page, selector = VIDEO_SELECTOR) {
   const links = await anchors.evaluateAll((els) =>
     els.map((e) => e.getAttribute("href"))
   )
-  return links.filter((v, i, arr) => arr.indexOf(v) === i)
+  return links.filter((v, i, arr) => arr.indexOf(v) === i && v.includes("from"))
 }
 
 async function niconicoCommentsHandler(res, config, title, url) {
