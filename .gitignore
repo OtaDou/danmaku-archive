@@ -1,4 +1,6 @@
 node_modules/
+archive/
+dist/
 playwright-report/
 test-results/
 yarn.lock
@@ -6,3 +8,4 @@ pnpm-lock.yaml
 package-lock.json
 tests
 .env
+*.7z

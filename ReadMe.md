@@ -20,8 +20,8 @@ Template from https://github.com/othneildrew/Best-README-Template
 
 ## Project structure
 - `/site` playwright script
-- `/src` danmaku to ass converter 
-- `/archive` danmaku raw json and ass files 
+- `/converter.js` input raw danmaku filename output with ass file 
+- `/archive` demo danmaku raw json and ass files
 > json file is compatible with the [online converter](https://tiansh.github.io/ass-danmaku-online/) 
 
 ## Demo site
@@ -32,28 +32,17 @@ Template from https://github.com/othneildrew/Best-README-Template
     <img src="./preview.webp" />
 </p>
 
-
-
 ## Credits
 <https://github.com/tiansh/ass-danmaku>
 
-## Licence
-MPL-2.0
+### How to gather your own danmaku archive
+1. clone this repository and `npx playwright install` and `pnpm i`
+2. based on `template` branch create new branch
+3. modify testcase in`sites/xxxxxxx.spec.js` file
+4. `pnpm start`
 
 
-### How to use
-#### Method1. use pre-grabbed danmaku
-1. Download pre-grabbed danmaku zip files from season index below. 
-2. Extract zip file.
-3. Drag archive/XXXX/XXX.ass file to mpv or other media player.
-
-#### Method2. grab danmaku by yourself
-1. clone this repository
-2. checkout `template` branch
-3. `npx playwright install` and `pnpm i`
-4. modify testcase in`sites/xxxxxxx.spec.js` file
-5. `pnpm start`
-
+## My danmaku collection
 <details>
 	<summary>2011-winter <a href="https://github.com/OtaDou/danmaku-archive/archive/refs/heads/2011-winter.zip">zip</a></summary>
 
@@ -400,11 +389,9 @@ MPL-2.0
 
 | NAME | EPISODE |
 | --- | --- |
-| 妻、小学生になる。 | 12 |
+| 嘆きの亡霊は引退したい | 13 |
 | ダンジョンに出会いを求めるのは間違っているだろうかV　豊穣の女神篇 | 15 |
 | 甘神さんちの縁結び | 24 |
-| ひとりぼっちの異世界攻略 | 12 |
-| ダンダダン | 12 |
 </details>
 <details>
 	<summary>2024-spring <a href="https://github.com/OtaDou/danmaku-archive/archive/refs/heads/2024-spring.zip">zip</a></summary>
@@ -433,4 +420,43 @@ MPL-2.0
 | 姫様“拷問”の時間です | 12 |
 | 愚かな天使は悪魔と踊る | 12 |
 | 治癒魔法の間違った使い方 | 13 |
+</details>
+<details>
+	<summary>2025-autumn <a href="https://github.com/OtaDou/danmaku-archive/archive/refs/heads/2025-autumn.zip">zip</a></summary>
+
+| NAME | EPISODE |
+| --- | --- |
+| 無限ガチャ | 12 |
+| 嘆きの亡霊は引退したい 第2クール | 11 |
+</details>
+<details>
+	<summary>2025-spring <a href="https://github.com/OtaDou/danmaku-archive/archive/refs/heads/2025-spring.zip">zip</a></summary>
+
+| NAME | EPISODE |
+| --- | --- |
+| 阿波連さんははかれない season2 | 12 |
+| 勘違いの工房主 | 12 |
+| 紫雲寺家の子供たち | 12 |
+</details>
+<details>
+	<summary>2025-summer <a href="https://github.com/OtaDou/danmaku-archive/archive/refs/heads/2025-summer.zip">zip</a></summary>
+
+| NAME | EPISODE |
+| --- | --- |
+| 沈黙の魔女の隠しごと | 13 |
+| 青春ブタ野郎はサンタクロースの夢を見ない | 13 |
+| タコピーの原罪 | 6 |
+| ブサメンガチファイター | 12 |
+| まったく最近の探偵ときたら | 12 |
+| わたしが恋人になれるわけないじゃん、ムリムリ! | 12 |
+| ゲーセン少女と異文化交流 | 13 |
+</details>
+<details>
+	<summary>2025-winter <a href="https://github.com/OtaDou/danmaku-archive/archive/refs/heads/2025-winter.zip">zip</a></summary>
+
+| NAME | EPISODE |
+| --- | --- |
+| 悪役令嬢転生おじさん | 12 |
+| Aランクパーティを離脱した俺は、元教え子たちと迷宮深部を目指す | 24 |
+| 君のことが大大大大大好きな100人の彼女 第2期 | 12 |
 </details>
