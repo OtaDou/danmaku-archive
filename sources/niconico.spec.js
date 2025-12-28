@@ -3,6 +3,7 @@ import { test } from "@playwright/test"
 import { readHistory, addRecord, saveFile } from "./utils.js"
 import { defaultOptions, parser, toLayout, toAss } from "../converter.js"
 
+// --- 常量配置 ---
 const INTERCEPT_URL_REGEX = /nv-?comment.nicovideo.jp\/(api\.json|v1\/threads)/
 const VIDEO_SELECTOR = `section >> nth=0 >> a[href^="https://www.nicovideo.jp/watch"]`
 const VIDEO_SELECTOR_ALT = `a.thumb_anchor.g-video-link`
@@ -10,129 +11,73 @@ const SAVE_BASE_PATH = `archive/`
 
 const danmakuConfig = {
   fontFamily: "Microsoft YaHei", // Microsoft YaHei/MS Gothic/Yu Gothic
+  offsetMs: -1000,
 }
+
+// --- 任务配置表 (新增番剧只需在此添加一行) ---
+const TASKS = [
+  { name: "阿波連さんははかれない season2", url: "https://anime.nicovideo.jp/detail/aharen-pr2/index.html" },
+  { name: "勘違いの工房主", url: "https://anime.nicovideo.jp/detail/kanchigai-pr/index.html", replace:["勘違いの工房主～英雄パーティの元雑用係が、実は戦闘以外がSSSランクだったというよくある話～", "勘違いの工房主"] },
+  { name: "紫雲寺家の子供たち", url: "https://anime.nicovideo.jp/detail/shiunjifamily/index.html"},
+]
 
 test.beforeEach(async ({ page }) => {
-  await addUserCookie(
-    page,
-    process.env.NICO_USER_SESSION,
-    process.env.NICO_USER_SESSION_SECURE
-  )
+  await page.context().addCookies([
+    { name: "user_session", value: process.env.NICO_USER_SESSION, domain: ".nicovideo.jp", path: "/" },
+    { name: "user_session_secure", value: process.env.NICO_USER_SESSION_SECURE, domain: ".nicovideo.jp", path: "/" }
+  ])
 })
 
-test("archive_folder_name1", async ({ page }, testInfo) => {
-  const config = {
-    seriesName: testInfo.title,
-    homePage: "https://anime.nicovideo.jp/detail/XXXXX/index.html",
-  }
+for (const task of TASKS) {
+  test(task.name, async ({ page }) => {
+    // 1. 初始化页面
+    await page.route("**/*.{png,jpg,jpeg}", (r) => r.abort())
+    await page.goto(task.url, { waitUntil: "domcontentloaded" })
 
-  await autoDownloadDanmaku(page, config)
-})
+    // 2. 获取并过滤新链接
+    const rawLinks = await page.locator(task.selector || VIDEO_SELECTOR).evaluateAll(els => els.map(e => e.href))
+    const uniqueLinks = [...new Set(rawLinks)].filter(link => task.selector ? true : link.includes("from"))
+    const history = new Set(readHistory(task.name).map(it => it.url))
+    const newLinks = uniqueLinks.filter(link => !history.has(link))
 
-test("archive_folder_name2", async ({ page }, testInfo) => {
-  const config = {
-    seriesName: testInfo.title,
-    selector: VIDEO_SELECTOR_ALT,
-    homePage: "https://ch.nicovideo.jp/XXXXXXX",
-  }
+    console.log(`[${task.name}] 发现新视频: ${newLinks.length}/${uniqueLinks.length}`)
 
-  await autoDownloadDanmaku(page, config)
-})
+    // 3. 循环处理
+    for (const link of newLinks) {
+      await page.goto(link, { waitUntil: "domcontentloaded" })
+      
+      // 标题处理：移除后缀 -> 冒号转全角 -> 自定义替换
+      let title = (await page.title()).replace(" - ニコニコ動画", "").replace(/:/g, "：").trim()
+      if (task.replace?.length === 2) title = title.replace(new RegExp(task.replace[0], 'g'), task.replace[1])
+      
+      if (/特別番組|総集編|特番/.test(title)) continue
 
-async function autoDownloadDanmaku(page, config) {
-  await page.route("**/*.{png,jpg,jpeg}", (route) => route.abort()) //No image
-  await page.goto(config.homePage, { waitUntil: "domcontentloaded" })
-
-  const links = await getVideoLinks(page, config.selector)
-
-  const seriesRecords = readHistory(config.seriesName)
-
-  const historyLinkSet = new Set(seriesRecords.map((it) => it.url))
-  const newLinks = links.filter((link) => !historyLinkSet.has(link))
-
-  console.log(`INFO: ${newLinks.length}(new) / ${links.length}(available)`)
-
-  for (const link of newLinks) {
-    await page.goto(link, { waitUntil: "domcontentloaded" })
-    let title = (await page.title()).replace(" - ニコニコ動画", "").trim()
-    if (/特別番組|総集編|直前特番/.test(title)) {
-      console.log(`skip... ${title}`)
-      continue
+      await Promise.all([
+        page.reload({ waitUntil: "domcontentloaded" }),
+        page.waitForResponse(res => handleDanmaku(res, task.name, title, link), { timeout: 30000 })
+      ])
     }
-    title = reservedCharReplace(title)
-    await Promise.all([
-      page.reload({ waitUntil: "domcontentloaded" }),
-      page.waitForResponse(
-        async (res) => niconicoCommentsHandler(res, config, title, link),
-        { timeout: 30_000 }
-      ),
-    ])
-  }
+  })
 }
 
-async function getVideoLinks(page, selector = VIDEO_SELECTOR) {
-  const anchors = page.locator(selector)
-  const links = await anchors.evaluateAll((els) =>
-    els.map((e) => e.getAttribute("href"))
-  )
-
-  if (selector !== VIDEO_SELECTOR) return links
-
-  const uniqueLinks = Array.from(new Set(links))
-  return uniqueLinks.filter((href) => href?.includes("from"))
-}
-
-async function niconicoCommentsHandler(res, config, title, url) {
-  const link = res.url()
-  const isComment = INTERCEPT_URL_REGEX.test(link)
-  if (!isComment) {
-    return false
-  }
+// --- 弹幕拦截与保存逻辑 ---
+async function handleDanmaku(res, seriesName, title, url) {
+  if (!INTERCEPT_URL_REGEX.test(res.url())) return false
 
   const rawBody = await res.body()
   const { thread, danmaku: content } = parser.niconico(rawBody)
-  const bangumiTitle = `${title}`
-  const seriesFolder = SAVE_BASE_PATH + config.seriesName + "/"
-  const item = {
-    id: thread,
-    meta: { name: bangumiTitle, url },
-    content,
-    layout: await toLayout(content, {
-      ...defaultOptions,
-      ...danmakuConfig,
-    }),
-  }
-  const ass = toAss(item, defaultOptions)
-  console.log(`saving...${bangumiTitle}.ass`)
-  // save ass danmaku
-  saveFile(seriesFolder, bangumiTitle, "ass", wordFilter(ass))
-  // save raw json
-  saveFile(seriesFolder, bangumiTitle, "json", String(rawBody))
-  addRecord(config.seriesName, bangumiTitle, url)
-
+  const layout = await toLayout(content, { ...defaultOptions, ...danmakuConfig })
+  const ass = toAss({ id: thread, meta: { name: title, url }, content, layout }, defaultOptions)
+  
+  // 敏感词过滤
+  const wordFilter = /\u8fd1\u5e73|\u5171\u7523|\u4e2d\u5171|\u4e2d\u56fd/
+  const cleanAss = ass.split('\n').filter(line => !wordFilter.test(line)).join('\n')
+  
+  const folder = `${SAVE_BASE_PATH}${seriesName}/`
+  saveFile(folder, title, "ass", cleanAss)
+  saveFile(folder, title, "json", String(rawBody))
+  addRecord(seriesName, title, url)
+  
+  console.log(`Successfully saved: ${title}`)
   return true
-}
-
-const wordFilter = (text, filter = /\u8fd1\u5e73|\u5171\u7523|\u4e2d\u5171/) =>
-  text.split('\n').filter(line => !filter.test(line)).join('\n')
-
-function reservedCharReplace(str) {
-  return str.replace(":", "：")
-}
-
-async function addUserCookie(page, userSession, sessionSecure) {
-  await page.context().addCookies([
-    {
-      name: "user_session",
-      value: userSession,
-      domain: ".nicovideo.jp",
-      path: "/",
-    },
-    {
-      name: "user_session_secure",
-      value: sessionSecure,
-      domain: ".nicovideo.jp",
-      path: "/",
-    },
-  ])
 }
