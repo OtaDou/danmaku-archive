@@ -20,24 +20,71 @@ test.beforeEach(async ({ page }) => {
   )
 })
 
-test("archive_folder_name1", async ({ page }, testInfo) => {
+test("ゲーセン少女と異文化交流", async ({ page }, testInfo) => {
   const config = {
     seriesName: testInfo.title,
-    homePage: "https://anime.nicovideo.jp/detail/XXXXX/index.html",
-  }
-
-  await autoDownloadDanmaku(page, config)
-})
-
-test("archive_folder_name2", async ({ page }, testInfo) => {
-  const config = {
-    seriesName: testInfo.title,
+    homePage: "https://ch.nicovideo.jp/gacen-girl-anime",
     selector: VIDEO_SELECTOR_ALT,
-    homePage: "https://ch.nicovideo.jp/XXXXXXX",
+    
   }
 
   await autoDownloadDanmaku(page, config)
 })
+
+test("沈黙の魔女の隠しごと", async ({ page }, testInfo) => {
+  const config = {
+    seriesName: testInfo.title,
+    homePage: "https://anime.nicovideo.jp/detail/silentwitch/index.html",
+  }
+
+  await autoDownloadDanmaku(page, config)
+})
+
+test("青春ブタ野郎はサンタクロースの夢を見ない", async ({ page }, testInfo) => {
+  const config = {
+    seriesName: testInfo.title,
+    homePage: "https://anime.nicovideo.jp/detail/ao-buta-santa/index.html",
+  }
+
+  await autoDownloadDanmaku(page, config)
+})
+
+test("タコピーの原罪", async ({ page }, testInfo) => {
+  const config = {
+    seriesName: testInfo.title,
+    homePage: "https://anime.nicovideo.jp/detail/takopi-project/index.html",
+  }
+
+  await autoDownloadDanmaku(page, config)
+})
+
+test("ブサメンガチファイター", async ({ page }, testInfo) => {
+  const config = {
+    seriesName: testInfo.title,
+    homePage: "https://anime.nicovideo.jp/detail/busamen-gachi-f/index.html",
+  }
+
+  await autoDownloadDanmaku(page, config)
+})
+
+test("まったく最近の探偵ときたら", async ({ page }, testInfo) => {
+  const config = {
+    seriesName: testInfo.title,
+    homePage: "https://anime.nicovideo.jp/detail/mattan-anime/index.html",
+  }
+
+  await autoDownloadDanmaku(page, config)
+})
+
+test("わたしが恋人になれるわけないじゃん、ムリムリ!", async ({ page }, testInfo) => {
+  const config = {
+    seriesName: testInfo.title,
+    homePage: "https://anime.nicovideo.jp/detail/watanare-anime/index.html",
+  }
+
+  await autoDownloadDanmaku(page, config)
+})
+
 
 async function autoDownloadDanmaku(page, config) {
   await page.route("**/*.{png,jpg,jpeg}", (route) => route.abort()) //No image
