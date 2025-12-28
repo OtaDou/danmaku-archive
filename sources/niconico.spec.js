@@ -21,19 +21,31 @@ test.beforeEach(async ({ page }) => {
   )
 })
 
-test("archive_folder_name1", async ({ page }, testInfo) => {
+test("嘆きの亡霊は引退したい", async ({ page }, testInfo) => {
   await autoDownloadDanmaku(page, {
     seriesName: testInfo.title,
-    homePage: "https://anime.nicovideo.jp/detail/XXXXX/index.html",
+    homePage: "https://anime.nicovideo.jp/detail/nageki-anime/index.html",
   })
 })
 
-test("archive_folder_name2", async ({ page }, testInfo) => {
-  await autoDownloadDanmaku(page, {
+test("ダンジョンに出会いを求めるのは間違っているだろうかV　豊穣の女神篇", async ({ page }, testInfo) => {
+  const config = {
     seriesName: testInfo.title,
     selector: VIDEO_SELECTOR_ALT,
-    homePage: "https://ch.nicovideo.jp/XXXXXXX",
-  })
+    homePage: "https://ch.nicovideo.jp/danmachi_V",
+  }
+
+  await autoDownloadDanmaku(page, config)
+})
+
+test("甘神さんちの縁結び", async ({ page }, testInfo) => {
+  const config = {
+    seriesName: testInfo.title,
+    selector: VIDEO_SELECTOR_ALT,
+    homePage: "https://ch.nicovideo.jp/amagami-anime",
+  }
+
+  await autoDownloadDanmaku(page, config)
 })
 
 async function autoDownloadDanmaku(page, config) {
