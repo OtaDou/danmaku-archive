@@ -21,19 +21,31 @@ test.beforeEach(async ({ page }) => {
   )
 })
 
-test("archive_folder_name1", async ({ page }, testInfo) => {
-  await autoDownloadDanmaku(page, {
+test("悪役令嬢転生おじさん", async ({ page }, testInfo) => {
+  const config = {
     seriesName: testInfo.title,
-    homePage: "https://anime.nicovideo.jp/detail/XXXXX/index.html",
-  })
+    homePage: "https://anime.nicovideo.jp/detail/tensei-ojisan/index.html",
+  }
+
+  await autoDownloadDanmaku(page, config)
 })
 
-test("archive_folder_name2", async ({ page }, testInfo) => {
-  await autoDownloadDanmaku(page, {
+test("Aランクパーティを離脱した俺は、元教え子たちと迷宮深部を目指す", async ({ page }, testInfo) => {
+  const config = {
     seriesName: testInfo.title,
-    selector: VIDEO_SELECTOR_ALT,
-    homePage: "https://ch.nicovideo.jp/XXXXXXX",
-  })
+    homePage: "https://anime.nicovideo.jp/detail/arank-party-ridatsu/index.html",
+  }
+
+  await autoDownloadDanmaku(page, config)
+})
+
+test("君のことが大大大大大好きな100人の彼女 第2期", async ({ page }, testInfo) => {
+  const config = {
+    seriesName: testInfo.title,
+    homePage: "https://anime.nicovideo.jp/detail/hyakkano2/index.html",
+  }
+
+  await autoDownloadDanmaku(page, config)
 })
 
 async function autoDownloadDanmaku(page, config) {
