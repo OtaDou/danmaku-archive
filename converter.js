@@ -15,6 +15,7 @@ export const defaultOptions = {
   maxDelay: 1,
   textOpacity: 80,
   maxOverlap: 1,
+  offsetMs: 0,
 }
 
 function decodeXmlEntities(s) {
@@ -211,7 +212,6 @@ export const parser = {
     )
     const cidMatch = /<chatid>(\d+)<\/chatid>/i.exec(clean)
     const cid = cidMatch ? +cidMatch[1] : NaN
-    /** @type {Array<Danmaku>} */
     const danmaku = []
     const re = /<d\b[^>]*\bp="([^"]+)"[^>]*>([\s\S]*?)<\/d>/gi
     let m
@@ -375,7 +375,6 @@ export const parser = {
         ? content
         : new TextDecoder("utf-8").decode(content)
     )
-    /** @type {Array<Danmaku>} */
     const danmaku = []
     const re1 = /<c\b(?![^>]*\bdeleted\b)[^>]*\bp="([^"]+)"[^>]*>([\s\S]*?)<\/c>/gi
     let m1
@@ -634,15 +633,19 @@ export async function toLayout(danmaku, options) {
         }
         if (!pos) return null
         const { top, time } = pos
+        let startTime = time
+        const endTime = options.fixDuration + time
+        if (endTime <= 0) return null
+        if (startTime < 0) startTime = 0
         line.layout = {
           type: "Fix",
           start: {
             x: Math.round(options.resolutionX / 2),
             y: top + line.height,
-            time,
+            time: startTime,
           },
           end: {
-            time: options.fixDuration + time,
+            time: endTime,
           },
         }
       }
@@ -651,7 +654,14 @@ export async function toLayout(danmaku, options) {
   }
 
   async function arrange(danmaku, options) {
-    const sorted = danmaku.slice(0).sort(({ time: x }, { time: y }) => x - y)
+    const offsetMs = Number(options.offsetMs ?? 0)
+    const offsetSec = Number.isFinite(offsetMs) ? offsetMs / 1000 : 0
+    const sorted = danmaku
+      .map((line) => ({
+        ...line,
+        time: (Number(line.time) || 0) + offsetSec,
+      }))
+      .sort(({ time: x }, { time: y }) => x - y)
     const place = placeDanmaku(options)
     const result = Array(sorted.length)
     let length = 0
