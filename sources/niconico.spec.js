@@ -21,21 +21,23 @@ test.beforeEach(async ({ page }) => {
   )
 })
 
-test("archive_folder_name1", async ({ page }, testInfo) => {
-  await autoDownloadDanmaku(page, {
+test("しかのこのこのここしたんたん", async ({ page }, testInfo) => {
+  const config = {
     seriesName: testInfo.title,
-    homePage: "https://anime.nicovideo.jp/detail/XXXXX/index.html",
-  })
+    homePage: "https://anime.nicovideo.jp/detail/anime-shikanoko/index.html",
+  }
+
+  await autoDownloadDanmaku(page, config)
 })
 
-test("archive_folder_name2", async ({ page }, testInfo) => {
-  await autoDownloadDanmaku(page, {
+test("ハズレ枠の【状態異常スキル】で最強になった俺がすべてを蹂躙するまで", async ({ page }, testInfo) => {
+  const config = {
     seriesName: testInfo.title,
-    selector: VIDEO_SELECTOR_ALT,
-    homePage: "https://ch.nicovideo.jp/XXXXXXX",
-  })
-})
+    homePage: "https://anime.nicovideo.jp/detail/hazurewaku-anime/index.html",
+  }
 
+  await autoDownloadDanmaku(page, config)
+})
 async function autoDownloadDanmaku(page, config) {
   await page.route("**/*.{png,jpg,jpeg}", (route) => route.abort()) //No image
   await page.goto(config.homePage, { waitUntil: "domcontentloaded" })
