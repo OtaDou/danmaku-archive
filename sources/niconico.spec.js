@@ -16,8 +16,9 @@ const danmakuConfig = {
 
 // --- 任务配置表 (新增番剧只需在此添加一行) ---
 const TASKS = [
-  { name: "archive_folder_name1", url: "https://anime.nicovideo.jp/detail/XXXXX/index.html" },
-  { name: "archive_folder_name2", url: "https://ch.nicovideo.jp/XXXXXXX", selector: VIDEO_SELECTOR_ALT },
+  { name: "陰の実力者になりたくて！ 2nd season", url: "https://anime.nicovideo.jp/detail/shadow-garden2/index.html" },
+  { name: "君のことが大大大大大好きな100人の彼女", url: "https://anime.nicovideo.jp/detail/hyakkano/index.html" },
+  { name: "ティアムーン帝国物語", url: "https://anime.nicovideo.jp/detail/tearmoon-pr/index.html" },
 ]
 
 test.beforeEach(async ({ page }) => {

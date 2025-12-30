@@ -1,48 +1,19 @@
 #!/usr/bin/env node
-import fs from "node:fs"
-import path from "node:path"
-import YAML from "yaml"
-const HISTORY_PATH = path.join(process.cwd(), "history.yml")
+import fs from "node:fs";
+import YAML from "yaml";
 
-const text = String(fs.readFileSync(HISTORY_PATH))
-const index = YAML.parse(text) ?? {}
-const DEFAULT_OUTPUT = "ReadMe.md"
-const REPO_URL = "https://github.com/OtaDou/danmaku-archive"
+const args = process.argv.slice(2).filter(a => !a.startsWith("-"));
+const isCompact = process.argv.includes("--compact");
 
-function indexOverview(seasonName) {
-  return `<details>\n\t<summary>${seasonName} <a href="${REPO_URL}/archive/refs/heads/${seasonName}.zip">zip</a></summary>\n
-${historyToTable()}
-</details>
-`
-}
-function titledTable(seasonName) {
-  return `# ${seasonName}
-${historyToTable()}
+const branch = args[0] || fs.readFileSync(".git/HEAD", "utf-8").split('/').pop().trim();
+console.log(`Working on branch: ${branch}`);
 
-### Download [${seasonName}.zip](${REPO_URL}/archive/refs/heads/${seasonName}.zip)`
-}
+const index = YAML.parse(fs.readFileSync("history.yml", "utf-8")) || {};
+const url = `https://github.com/OtaDou/danmaku-archive/archive/refs/heads/${branch}.zip`;
+const table = `| NAME | EPISODE |\n| --- | --- |\n${Object.entries(index).map(([k, v]) => `| ${k} | ${v.length} |`).join("\n")}`;
 
-function historyToTable() {
-  return (
-    `| NAME | EPISODE |\n| --- | --- |\n` +
-    Object.keys(index)
-      .map((title) => `| ${title} | ${index[title].length} |`)
-      .join("\n")
-  )
-}
+const out = isCompact 
+  ? `<details>\n<summary>${branch} <a href="${url}">zip</a></summary>\n\n${table}\n</details>\n`
+  : `# ${branch}\n${table}\n\n### Download [${branch}.zip](${url})`;
 
-if (process.argv.length < 3) {
-  console.log("USAGE: history2md.mjs <seasonName> [--compact]")
-  process.exit(0)
-}
-
-const seasonName = process.argv[2]
-const compact = process.argv.includes("--compact")
-
-if (compact) {
-  const content = indexOverview(seasonName)
-  fs.appendFileSync(DEFAULT_OUTPUT, content)
-} else {
-  const content = titledTable(seasonName)
-  fs.writeFileSync(DEFAULT_OUTPUT, content)
-}
+fs[isCompact ? "appendFileSync" : "writeFileSync"]("ReadMe.md", out);
