@@ -2,18 +2,18 @@
 import fs from "node:fs";
 import YAML from "yaml";
 
-const branch = process.argv.find(a => !a.includes('/') && !a.startsWith('-')) 
-  || (console.log(`Detected branch: ${fs.readFileSync(".git/HEAD", "utf-8").split('/').pop().trim()}`), fs.readFileSync(".git/HEAD", "utf-8").split('/').pop().trim());
-
+const args = process.argv.slice(2).filter(a => !a.startsWith("-"));
 const isCompact = process.argv.includes("--compact");
-const index = YAML.parse(fs.readFileSync("history.yml", "utf8")) || {};
-const zipUrl = `https://github.com/OtaDou/danmaku-archive/archive/refs/heads/${branch}.zip`;
 
-const table = `| NAME | EPISODE |\n| --- | --- |\n` + 
-  Object.entries(index).map(([k, v]) => `| ${k} | ${v.length} |`).join("\n");
+const branch = args[0] || fs.readFileSync(".git/HEAD", "utf-8").split('/').pop().trim();
+console.log(`Working on branch: ${branch}`);
+
+const index = YAML.parse(fs.readFileSync("history.yml", "utf-8")) || {};
+const url = `https://github.com/OtaDou/danmaku-archive/archive/refs/heads/${branch}.zip`;
+const table = `| NAME | EPISODE |\n| --- | --- |\n${Object.entries(index).map(([k, v]) => `| ${k} | ${v.length} |`).join("\n")}`;
 
 const out = isCompact 
-  ? `<details>\n<summary>${branch} <a href="${zipUrl}">zip</a></summary>\n\n${table}\n</details>\n`
-  : `# ${branch}\n${table}\n\n### Download [${branch}.zip](${zipUrl})`;
+  ? `<details>\n<summary>${branch} <a href="${url}">zip</a></summary>\n\n${table}\n</details>\n`
+  : `# ${branch}\n${table}\n\n### Download [${branch}.zip](${url})`;
 
 fs[isCompact ? "appendFileSync" : "writeFileSync"]("ReadMe.md", out);

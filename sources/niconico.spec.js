@@ -16,8 +16,10 @@ const danmakuConfig = {
 
 // --- 任务配置表 (新增番剧只需在此添加一行) ---
 const TASKS = [
-  { name: "archive_folder_name1", url: "https://anime.nicovideo.jp/detail/XXXXX/index.html" },
-  { name: "archive_folder_name2", url: "https://ch.nicovideo.jp/XXXXXXX", selector: VIDEO_SELECTOR_ALT },
+  { name: "無職転生Ⅱ", url: "https://ch.nicovideo.jp/mushokutensei_2", selector: VIDEO_SELECTOR_ALT },
+  { name: "政宗くんのリベンジR", url: "https://anime.nicovideo.jp/detail/masamune-tv2/index.html" },
+  { name: "てんぷる", url: "https://anime.nicovideo.jp/detail/temple-anime/index.html" },
+  { name: "英雄教室", url: "https://anime.nicovideo.jp/detail/eiyukyoushitsu-anime/index.html" },
 ]
 
 test.beforeEach(async ({ page }) => {
@@ -49,7 +51,7 @@ for (const task of TASKS) {
       let title = (await page.title()).replace(" - ニコニコ動画", "").replace(/:/g, "：").trim()
       if (task.replace?.length === 2) title = title.replace(new RegExp(task.replace[0], 'g'), task.replace[1])
       
-      if (/特別番組|総集編|特番/.test(title)) continue
+      if (/特別番組|総集編|特番|直前/.test(title)) continue
 
       await Promise.all([
         page.reload({ waitUntil: "domcontentloaded" }),
