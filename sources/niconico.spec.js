@@ -14,10 +14,13 @@ const danmakuConfig = {
   offsetMs: -1000,
 }
 
+
 // --- 任务配置表 (新增番剧只需在此添加一行) ---
 const TASKS = [
-  { name: "archive_folder_name1", url: "https://anime.nicovideo.jp/detail/XXXXX/index.html" },
-  { name: "archive_folder_name2", url: "https://ch.nicovideo.jp/XXXXXXX", selector: VIDEO_SELECTOR_ALT },
+  { name: "お兄ちゃんはおしまい", url: "https://anime.nicovideo.jp/detail/onimai/index.html" },
+  { name: "スパイ教室", url: "https://anime.nicovideo.jp/detail/spyroom-anime/index.html" },
+  { name: "便利屋斎藤さん、異世界に行く", url: "https://anime.nicovideo.jp/detail/saitou-anime/index.html" },
+  { name: "ダンジョンに出会いを求めるのは間違っているだろうかⅣ 深章 厄災篇", url: "https://anime.nicovideo.jp/detail/danmachi4-yakusai/index.html" }
 ]
 
 test.beforeEach(async ({ page }) => {
