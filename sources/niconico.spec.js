@@ -16,8 +16,9 @@ const danmakuConfig = {
 
 // --- 任务配置表 (新增番剧只需在此添加一行) ---
 const TASKS = [
-  { name: "archive_folder_name1", url: "https://anime.nicovideo.jp/detail/XXXXX/index.html" },
-  { name: "archive_folder_name2", url: "https://ch.nicovideo.jp/XXXXXXX", selector: VIDEO_SELECTOR_ALT },
+  { name: "かぐや様は告らせたい-ファーストキッスは終わらない", url: "https://anime.nicovideo.jp/detail/kaguya-love4/index.html" },
+  { name: "この素晴らしい世界に爆焔を", url: "https://anime.nicovideo.jp/detail/konosuba-bakuen/index.html" },
+  { name: "神無き世界のカミサマ活動", url: "https://anime.nicovideo.jp/detail/kamikatsu-anime/index.html", replace: ["「.*」", ""] },
 ]
 
 test.beforeEach(async ({ page }) => {
