@@ -16,8 +16,9 @@ const danmakuConfig = {
 
 // --- 任务配置表 (新增番剧只需在此添加一行) ---
 const TASKS = [
-  { name: "archive_folder_name1", url: "https://anime.nicovideo.jp/detail/XXXXX/index.html" },
-  { name: "archive_folder_name2", url: "https://ch.nicovideo.jp/XXXXXXX", selector: VIDEO_SELECTOR_ALT },
+  { name: "86-エイティシックス-", url: "https://anime.nicovideo.jp/detail/anime-86/index.html" },
+  { name: "究極進化したフルダイブRPGが現実よりもクソゲーだったら", url: "https://anime.nicovideo.jp/detail/fulldive-rpg/index.html" },
+  { name: "戦闘員、派遣します！", url: "https://anime.nicovideo.jp/detail/kisaragi/index.html" },
 ]
 
 test.beforeEach(async ({ page }) => {
