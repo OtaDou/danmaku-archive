@@ -16,8 +16,10 @@ const danmakuConfig = {
 
 // --- 任务配置表 (新增番剧只需在此添加一行) ---
 const TASKS = [
-  { name: "archive_folder_name1", url: "https://anime.nicovideo.jp/detail/XXXXX/index.html" },
-  { name: "archive_folder_name2", url: "https://ch.nicovideo.jp/XXXXXXX", selector: VIDEO_SELECTOR_ALT },
+  { name: "小林さんちのメイドラゴンS", url: "https://anime.nicovideo.jp/detail/maidragon2/index.html" },
+  { name: "ひぐらしのなく頃に卒", url: "https://anime.nicovideo.jp/detail/higurashianime2/index.html" },
+  { name: "魔法科高校の優等生", url: "https://anime.nicovideo.jp/detail/mahouka-yuutousei/index.html" },
+  { name: "迷宮ブラックカンパニー", url: "https://anime.nicovideo.jp/detail/meikyubc-anime/index.html" }
 ]
 
 test.beforeEach(async ({ page }) => {
