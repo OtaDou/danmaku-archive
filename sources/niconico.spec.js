@@ -16,8 +16,11 @@ const danmakuConfig = {
 
 // --- 任务配置表 (新增番剧只需在此添加一行) ---
 const TASKS = [
-  { name: "archive_folder_name1", url: "https://anime.nicovideo.jp/detail/XXXXX/index.html" },
-  { name: "archive_folder_name2", url: "https://ch.nicovideo.jp/XXXXXXX", selector: VIDEO_SELECTOR_ALT },
+  { name: "異世界おじさん", url: "https://anime.nicovideo.jp/detail/isekaiojisan/index.html" },
+  { name: "Engage Kiss", url: "https://anime.nicovideo.jp/detail/engage-kiss/index.html" },
+  { name: "ダンジョンに出会いを求めるのは間違っているだろうかⅣ 新章 迷宮篇", url: "https://anime.nicovideo.jp/detail/danmachi4/index.html" },
+  { name: "邪神ちゃんドロップキックX", url: "https://anime.nicovideo.jp/detail/jashinchan3/index.html" },
+  { name: "オーバーロードⅣ", url: "https://anime.nicovideo.jp/detail/overlord-anime4/index.html" }
 ]
 
 test.beforeEach(async ({ page }) => {
