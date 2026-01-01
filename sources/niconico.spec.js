@@ -16,8 +16,9 @@ const danmakuConfig = {
 
 // --- 任务配置表 (新增番剧只需在此添加一行) ---
 const TASKS = [
-  { name: "archive_folder_name1", url: "https://anime.nicovideo.jp/detail/XXXXX/index.html" },
-  { name: "archive_folder_name2", url: "https://ch.nicovideo.jp/XXXXXXX", selector: VIDEO_SELECTOR_ALT },
+  { name: "阿波連さんははかれない", url: "https://anime.nicovideo.jp/detail/aharen-pr/index.html" },
+  { name: "乙女ゲー世界はモブに厳しい世界です", url: "https://anime.nicovideo.jp/detail/mobseka/index.html" },
+  { name: "かぐや様は告らせたい-ウルトラロマンティック", url: "https://anime.nicovideo.jp/detail/kaguya-love3/index.html" }
 ]
 
 test.beforeEach(async ({ page }) => {
