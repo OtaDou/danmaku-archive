@@ -16,8 +16,7 @@ const danmakuConfig = {
 
 // --- 任务配置表 (新增番剧只需在此添加一行) ---
 const TASKS = [
-  { name: "archive_folder_name1", url: "https://anime.nicovideo.jp/detail/XXXXX/index.html" },
-  { name: "archive_folder_name2", url: "https://ch.nicovideo.jp/XXXXXXX", selector: VIDEO_SELECTOR_ALT },
+  { name: "怪人開発部の黒井津さん", url: "https://anime.nicovideo.jp/detail/kuroitsusan-anime/index.html" },
 ]
 
 test.beforeEach(async ({ page }) => {
