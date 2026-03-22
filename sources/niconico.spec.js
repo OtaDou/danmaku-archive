@@ -16,8 +16,10 @@ const danmakuConfig = {
 
 // --- 任务配置表 (新增番剧只需在此添加一行) ---
 const TASKS = [
-  { name: "archive_folder_name1", url: "https://anime.nicovideo.jp/detail/XXXXX/index.html" },
-  { name: "archive_folder_name2", url: "https://ch.nicovideo.jp/XXXXXXX", selector: VIDEO_SELECTOR_ALT },
+  { name: "甘城ブリリアントパーク", url: "https://ch.nicovideo.jp/amaburi-anime",selector: VIDEO_SELECTOR_ALT },
+  { name: "グリザイアの果実", url: "https://ch.nicovideo.jp/grisaia-anime",selector: VIDEO_SELECTOR_ALT },
+  { name: "異能バトルは日常系のなかで", url: "https://ch.nicovideo.jp/inou-anime",selector: VIDEO_SELECTOR_ALT },
+  { name: "憑物語", url: "https://ch.nicovideo.jp/tukimonogatari",selector: VIDEO_SELECTOR_ALT },
 ]
 
 test.beforeEach(async ({ page }) => {
