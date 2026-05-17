@@ -5,7 +5,7 @@ import { defaultOptions, parser, toLayout, toAss } from "../converter.js"
 
 // --- 常量配置 ---
 const INTERCEPT_URL_REGEX = /nv-?comment.nicovideo.jp\/(api\.json|v1\/threads)/
-const VIDEO_SELECTOR = `section >> nth=0 >> a[href^="https://www.nicovideo.jp/watch"]`
+const VIDEO_SELECTOR = `section >> nth=1 >> a[href^="https://www.nicovideo.jp/watch"]`
 const VIDEO_SELECTOR_ALT = `a.thumb_anchor.g-video-link`
 const SAVE_BASE_PATH = `archive/`
 
@@ -16,8 +16,9 @@ const danmakuConfig = {
 
 // --- 任务配置表 (新增番剧只需在此添加一行) ---
 const TASKS = [
-  { name: "archive_folder_name1", url: "https://anime.nicovideo.jp/detail/XXXXX/index.html" },
-  { name: "archive_folder_name2", url: "https://ch.nicovideo.jp/XXXXXXX", selector: VIDEO_SELECTOR_ALT },
+  { name: "お気楽領主の楽しい領地防衛", url: "https://anime.nicovideo.jp/detail/okiraku-ryousyu/index.html" },
+  { name: "勇者刑に処す 懲罰勇者9004隊刑務記録", url: "https://anime.nicovideo.jp/detail/yushakei/index.html" },
+  { name: "姫様“拷問”の時間です 第2期", url: "https://anime.nicovideo.jp/detail/himesama-goumon2/index.html" },
 ]
 
 test.beforeEach(async ({ page }) => {

@@ -1,0 +1,16 @@
+[Script Info]
+Title: 勇者刑に処す 懲罰勇者9004隊刑務記録 #12「刑罰：ヨーフ・チェグ港湾避難救助 3」
+Original Script: https://www.nicovideo.jp/watch/so46253101?from=nanime_yushakei_chvideo
+ScriptType: v4.00+
+Collisions: Normal
+PlayResX: 854
+PlayResY: 480
+Timer: 100.0000
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Fix,Microsoft YaHei,1,&H33FFFFFF,&H33FFFFFF,&H33000000,&H33000000,1,0,0,0,100,100,0,0,1,2,0,2,20,20,2,0
+Style: Rtl,Microsoft YaHei,1,&H33FFFFFF,&H33FFFFFF,&H33000000,&H33000000,1,0,0,0,100,100,0,0,1,2,0,2,20,20,2,0
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
