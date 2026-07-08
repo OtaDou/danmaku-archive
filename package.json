@@ -5,9 +5,9 @@
   "repository": "https://github.com/OtaDou/danmaku-archive.git",
   "license": "MPL",
   "devDependencies": {
-    "@playwright/test": "1.43.1",
-    "dotenv": "17.2.3",
-    "yaml": "2.8.2"
+    "@playwright/test": "1.61.1",
+    "dotenv": "17.4.2",
+    "yaml": "2.9.0"
   },
   "scripts": {
     "start": "playwright test --retries=10"

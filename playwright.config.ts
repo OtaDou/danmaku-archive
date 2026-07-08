@@ -8,8 +8,6 @@ const config: PlaywrightTestConfig = {
     timeout: 5000,
   },
   fullyParallel: true,
-  forbidOnly: !!process.env.CI,
-  retries: process.env.CI ? 1 : 0,
   workers: 1,
   reporter: "line",
   use: {
@@ -22,12 +20,9 @@ const config: PlaywrightTestConfig = {
       },
     },
     actionTimeout: 0,
-    /* Base URL to use in actions like `await page.goto('/')`. */
-    // baseURL: 'http://localhost:3000',
     trace: "on-first-retry",
   },
 
-  /* Configure projects for major browsers */
   projects: [
     {
       name: "chromium",
@@ -35,11 +30,6 @@ const config: PlaywrightTestConfig = {
         ...devices["Desktop Chrome"],
         viewport: { width: 1920, height: 1080 },
         locale: "ja-JP",
-        // launchOptions:{
-        //   proxy: {
-        //     server: 'http://localhost:11223',
-        //   }
-        // }
       },
     },
   ],
