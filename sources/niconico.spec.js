@@ -16,8 +16,9 @@ const danmakuConfig = {
 
 // --- 任务配置表 (新增番剧只需在此添加一行) ---
 const TASKS = [
-  { name: "archive_folder_name1", url: "https://anime.nicovideo.jp/detail/XXXXX/index.html" },
-  { name: "archive_folder_name2", url: "https://ch.nicovideo.jp/XXXXXXX", selector: VIDEO_SELECTOR_ALT },
+  { name: "自称悪役令嬢な婚約者の観察記録", url: "https://anime.nicovideo.jp/detail/jisho-akuyaku/index.html" },
+  { name: "ようこそ実力至上主義の教室へ 4th Season", url: "https://anime.nicovideo.jp/detail/you-zitsu4/index.html" },
+  { name: "Re：ゼロから始める異世界生活　4th season", url: "https://anime.nicovideo.jp/detail/re-zero-anime4/index.html" },
 ]
 
 test.beforeEach(async ({ page }) => {
