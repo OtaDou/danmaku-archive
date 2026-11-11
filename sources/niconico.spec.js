@@ -16,8 +16,11 @@ const danmakuConfig = {
 
 // --- 任务配置表 (新增番剧只需在此添加一行) ---
 const TASKS = [
-  { name: "archive_folder_name1", url: "https://anime.nicovideo.jp/detail/XXXXX/index.html" },
-  { name: "archive_folder_name2", url: "https://ch.nicovideo.jp/XXXXXXX", selector: VIDEO_SELECTOR_ALT },
+  { name: "ヤニねこ", url: "https://anime.nicovideo.jp/detail/yanineko-anime" },
+  { name: "幼女戦記Ⅱ", url: "https://anime.nicovideo.jp/detail/youjo-senki2" },
+  { name: "落第賢者の学院無双", url: "https://anime.nicovideo.jp/detail/rakudai-anime" },
+  { name: "無職転生Ⅲ ～異世界行ったら本気だす～", url: "https://anime.nicovideo.jp/detail/mushokutensei-3ki" },
+  { name: "『ぐらんぶる』Season 3", url: "https://anime.nicovideo.jp/detail/grandblue-anime3" },
 ]
 
 test.beforeEach(async ({ page }) => {
